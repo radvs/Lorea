@@ -1,0 +1,85 @@
+@layer os.ctrls {
+    .os-icon {
+        display: inline-block;
+        flex: none;
+        vertical-align: middle;
+        fill: none;
+        stroke: currentColor;
+    }
+
+    .os-icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-inline-size: var(--os-icon-btn-size, 2rem);
+        min-block-size: var(--os-icon-btn-size, 2rem);
+        padding: 0;
+        border: 0;
+        border-radius: var(--os-radius);
+        background: none;
+        color: inherit;
+        line-height: 0;
+        cursor: pointer;
+        transition: background-color var(--os-speed) linear;
+
+        &:hover:not(:disabled) {
+            background: var(--os-icon-btn-hover, color-mix(in oklch, currentColor var(--os-state-hover), transparent));
+        }
+
+        &:active:not(:disabled) {
+            background: var(--os-icon-btn-press, color-mix(in oklch, currentColor var(--os-state-press), transparent));
+        }
+
+        &:disabled {
+            opacity: var(--os-state-off);
+            cursor: not-allowed;
+        }
+    }
+
+    .os-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--os-btn-gap, var(--os-gap));
+        padding: var(--os-btn-pad, 0.5rem 0.875rem);
+        border: 1px solid transparent;
+        border-radius: var(--os-btn-radius, var(--os-radius));
+        background: var(--os-btn-bg, var(--os-bg));
+        color: var(--os-btn-fg, var(--os-fg));
+        font: inherit;
+        line-height: 1;
+        white-space: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        &[data-size="small"] {
+            padding: var(--os-btn-pad-small, 0.25rem 0.5rem);
+        }
+
+        &[data-size="large"] {
+            padding: var(--os-btn-pad-large, 0.75rem 1.25rem);
+        }
+
+        &[data-kind="key"] {
+            background: var(--os-btn-key-bg, var(--os-invert-bg));
+            color: var(--os-btn-key-fg, var(--os-invert-fg));
+        }
+
+        &[data-kind="ghost"] {
+            background: transparent;
+            border-color: var(--os-btn-ghost-border, currentColor);
+        }
+
+        &[data-kind="danger"] {
+            background: var(--os-btn-danger-bg, transparent);
+            color: var(--os-btn-danger-fg);
+        }
+    }
+}

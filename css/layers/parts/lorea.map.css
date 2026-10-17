@@ -1,0 +1,257 @@
+@layer lorea.parts {
+    .stack-map {
+        padding-block-start: clamp(1.75rem, 4vw, 2.75rem);
+        border-block-start: 1px solid var(--lorea-rule);
+        scroll-margin-block-start: 4rem;
+    }
+
+    .map-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-block-end: 1.25rem;
+    }
+
+    .map-heading h2 {
+        margin: 0;
+        color: var(--lorea-heading);
+        font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+        font-weight: 650;
+        line-height: 1.35;
+    }
+
+    .map-heading p {
+        max-inline-size: 42rem;
+        margin: 0.5rem 0 0;
+        color: var(--lorea-muted);
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .map-views {
+        display: flex;
+        gap: 0.25rem;
+        flex: none;
+    }
+
+    .map-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
+        gap: 1.5rem;
+        align-items: start;
+    }
+
+    .map-canvas {
+        min-inline-size: 0;
+        border: 1px solid var(--lorea-rule);
+        background: var(--lorea-chrome);
+    }
+
+    .map-svg {
+        display: block;
+        inline-size: 100%;
+        block-size: auto;
+        direction: ltr;
+    }
+
+    .map-lane-rule {
+        stroke: var(--lorea-rule);
+        stroke-width: 1;
+    }
+
+    .map-edge {
+        fill: none;
+        stroke: var(--lorea-rule-dark);
+        stroke-width: 2;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: lorea-draw 600ms ease-out forwards;
+        animation-delay: calc(200ms + var(--d, 0) * 220ms);
+        transition: stroke 150ms ease-out;
+    }
+
+    .map-edge.is-on {
+        stroke: var(--lorea-accent);
+    }
+
+    .map-node {
+        cursor: pointer;
+        outline: none;
+    }
+
+    .map-hit {
+        fill: transparent;
+        stroke: none;
+    }
+
+    .map-node:hover .map-hit {
+        fill: var(--lorea-hover);
+    }
+
+    .map-node:focus-visible .map-hit {
+        stroke: var(--lorea-accent);
+        stroke-width: 2;
+    }
+
+    .map-ring {
+        fill: var(--lorea-bg);
+        stroke: var(--lorea-accent);
+        stroke-width: 2;
+    }
+
+    .map-dot {
+        fill: var(--lorea-bg);
+        stroke: var(--lorea-rule-dark);
+        stroke-width: 1;
+        transition: fill 150ms ease-out;
+    }
+
+    .map-node.is-on .map-dot {
+        fill: var(--lorea-accent);
+        stroke: var(--lorea-accent);
+    }
+
+    .map-node.is-selected .map-ring {
+        stroke-width: 3;
+    }
+
+    .map-name,
+    .map-title {
+        paint-order: stroke;
+        stroke: var(--lorea-chrome);
+        stroke-width: 4px;
+        stroke-linejoin: round;
+    }
+
+    .map-name {
+        fill: var(--lorea-heading);
+        font-family: var(--lorea-code-font);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .map-title {
+        fill: var(--lorea-muted);
+        font-size: 12px;
+    }
+
+    .map-card {
+        display: grid;
+        gap: 0.6rem;
+        justify-items: start;
+        padding: 1.25rem;
+        border: 1px solid var(--lorea-rule);
+        border-block-start: 2px solid var(--lorea-accent);
+        background: var(--lorea-bg);
+    }
+
+    .map-card h3 {
+        margin: 0;
+        color: var(--lorea-heading);
+        font-size: 1.25rem;
+    }
+
+    .map-card h3 code {
+        color: inherit;
+    }
+
+    .map-card p {
+        margin: 0;
+        line-height: 1.8;
+    }
+
+    .map-card-title {
+        color: var(--lorea-heading);
+        font-weight: 600;
+    }
+
+    .map-card-summary {
+        color: var(--lorea-muted);
+        font-size: 0.9rem;
+    }
+
+    .map-card-uses {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.4rem;
+        margin-block-end: 0.4rem !important;
+        color: var(--lorea-muted);
+        font-size: 0.82rem;
+    }
+
+    .map-list {
+        display: none;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-block-start: 1px solid var(--lorea-rule);
+    }
+
+    .map-list a {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 0.85rem;
+        min-block-size: 4rem;
+        padding: 0.75rem 0.5rem;
+        border-block-end: 1px solid var(--lorea-rule);
+        text-decoration: none;
+    }
+
+    .map-list a:hover {
+        background: var(--lorea-hover);
+    }
+
+    .map-list-dot {
+        inline-size: 0.75rem;
+        block-size: 0.75rem;
+        border: 2px solid var(--lorea-accent);
+        border-radius: 50%;
+    }
+
+    .map-list-copy {
+        display: grid;
+        gap: 0.2rem;
+        min-inline-size: 0;
+    }
+
+    .map-list-copy code {
+        color: var(--lorea-heading);
+        font-weight: 600;
+    }
+
+    .map-list-copy span {
+        color: var(--lorea-muted);
+        font-size: 0.82rem;
+    }
+
+    .stack-map[data-view="list"] .map-body {
+        display: none;
+    }
+
+    .stack-map[data-view="list"] .map-list {
+        display: block;
+    }
+
+    @media (max-width: 760px) {
+        .stack-map[data-view="auto"] .map-body {
+            display: none;
+        }
+
+        .stack-map[data-view="auto"] .map-list {
+            display: block;
+        }
+
+        .map-body {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
+    @media (max-width: 620px) {
+            .map-head {
+                align-items: start;
+            }
+    }
+}

@@ -1,0 +1,102 @@
+@layer os.ctrls {
+    .os-dialog {
+        inline-size: min(var(--os-dialog-size, 32rem), 92vw);
+        max-block-size: 86dvh;
+        padding: 0;
+        border: 1px solid var(--os-dialog-border, var(--os-border));
+        border-radius: var(--os-dialog-radius, var(--os-radius-lg));
+        background: var(--os-dialog-bg, Canvas);
+        color: var(--os-dialog-fg, CanvasText);
+        overflow: hidden;
+
+        &::backdrop {
+            background: var(--os-dialog-veil, rgb(0 0 0 / 0.5));
+        }
+
+        &[open] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        & > :not(.os-dialog-body) {
+            flex: none;
+        }
+
+        & > .os-dialog-body {
+            flex: 1 1 auto;
+            min-block-size: 0;
+        }
+    }
+
+    .os-dialog-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--os-gap);
+        padding: var(--os-dialog-pad, var(--os-pad));
+        padding-block-end: 0;
+    }
+
+    .os-dialog-title {
+        min-inline-size: 0;
+        margin: 0;
+        font-size: var(--os-dialog-title-size, 1rem);
+        font-weight: 700;
+        overflow-wrap: anywhere;
+    }
+
+    .os-dialog-note {
+        margin: var(--os-dialog-pad, var(--os-pad));
+        margin-block-end: 0;
+        padding: var(--os-dialog-note-pad, 0.625rem 0.75rem);
+        border-inline-start: 2px solid var(--os-chip-info-fg, currentColor);
+        border-radius: var(--os-radius);
+        background: var(--os-chip-info-bg, var(--os-fill));
+        font-size: var(--os-dialog-note-size, 0.875rem);
+        overflow-wrap: anywhere;
+
+        &[data-tone="good"] {
+            border-inline-start-color: var(--os-chip-good-fg, currentColor);
+            background: var(--os-chip-good-bg, var(--os-fill));
+        }
+
+        &[data-tone="warn"] {
+            border-inline-start-color: var(--os-chip-warn-fg, currentColor);
+            background: var(--os-chip-warn-bg, var(--os-fill));
+        }
+
+        &[data-tone="bad"] {
+            border-inline-start-color: var(--os-chip-bad-fg, currentColor);
+            background: var(--os-chip-bad-bg, var(--os-fill));
+        }
+    }
+
+    .os-dialog-body {
+        padding: var(--os-dialog-pad, var(--os-pad));
+        overflow: auto;
+    }
+
+    .os-dialog-foot {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: var(--os-gap);
+        padding: var(--os-dialog-pad, var(--os-pad));
+        padding-block-start: 0;
+    }
+
+    :root:has(.os-dialog:modal) {
+        overflow: hidden;
+        scrollbar-gutter: stable;
+    }
+
+    .os-confirm-body {
+        display: grid;
+        gap: var(--os-confirm-gap, 0.75rem);
+    }
+
+    .os-confirm-text {
+        margin: 0;
+        color: var(--os-confirm-fg, inherit);
+    }
+}
