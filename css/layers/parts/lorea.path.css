@@ -1,0 +1,75 @@
+@layer lorea.parts {
+    .dep-path {
+        display: grid;
+        margin: 0.75rem 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .dep-step {
+        position: relative;
+        display: grid;
+        grid-template-columns: 0.9rem minmax(0, 1fr);
+        gap: 0.65rem;
+        padding-block: 0.4rem;
+    }
+
+    .dep-step:not(:last-child)::after {
+        position: absolute;
+        inset-block: 1rem 0;
+        inset-inline-start: 0.42rem;
+        inline-size: 1px;
+        background: var(--lorea-rule-dark);
+        content: "";
+    }
+
+    .dep-dot {
+        position: relative;
+        z-index: 1;
+        inline-size: 0.55rem;
+        block-size: 0.55rem;
+        margin-block-start: 0.45rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 50%;
+        background: var(--lorea-bg);
+    }
+
+    .dep-step[data-depth="0"] .dep-dot {
+        border-color: var(--lorea-accent);
+        background: var(--lorea-accent);
+    }
+
+    .dep-copy {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.15rem 0.6rem;
+    }
+
+    .dep-copy code {
+        color: var(--lorea-heading);
+        font-size: 0.85rem;
+        font-weight: 600;
+        unicode-bidi: isolate;
+    }
+
+    .dep-copy a {
+        color: var(--lorea-link);
+        text-decoration: none;
+    }
+
+    .dep-copy a:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    .dep-title {
+        color: var(--lorea-muted);
+        font-size: 0.85rem;
+    }
+
+    .dep-kind {
+        color: var(--lorea-muted);
+        font-size: 0.75rem;
+    }
+}

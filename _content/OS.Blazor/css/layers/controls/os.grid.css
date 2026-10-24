@@ -1,0 +1,159 @@
+@layer os.ctrls {
+    .os-grid-state {
+        --os-state-rows-pad: var(--os-grid-state-pad, 1rem);
+    }
+
+    .os-grid-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--os-space, 0.75rem);
+        flex-wrap: wrap;
+        padding-block-end: var(--os-grid-bar-pad, 0.625rem);
+    }
+
+    .os-grid-tools {
+        display: flex;
+        align-items: center;
+        gap: var(--os-grid-bar-gap, 0.5rem);
+        flex-wrap: wrap;
+        flex: 1 1 auto;
+        min-inline-size: 0;
+    }
+
+    .os-grid-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--os-grid-foot-gap, 0.75rem);
+        flex-wrap: wrap;
+        padding-block-start: var(--os-grid-foot-pad, 0.625rem);
+    }
+
+    .os-grid-count {
+        font-size: var(--os-grid-count-size, 0.75rem);
+        color: color-mix(in oklch, currentColor var(--os-state-muted, 0.6), transparent);
+    }
+
+    .os-grid-scroll {
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+    }
+
+    .os-grid {
+        inline-size: 100%;
+        border-collapse: collapse;
+        font-size: var(--os-grid-size, 0.8125rem);
+
+        & th {
+            padding: var(--os-grid-head-pad, 0.625rem 1rem);
+            text-align: start;
+            font-size: var(--os-grid-head-size, 0.75rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--os-grid-head-fg, inherit);
+            white-space: nowrap;
+            background: var(--os-grid-head-bg, var(--os-fill));
+            border-block-end: 1px solid var(--os-grid-head-rule, var(--os-grid-rule, var(--os-fill)));
+        }
+
+        & td {
+            padding: var(--os-grid-pad, 0.5rem 1rem);
+            border-block-end: 1px solid var(--os-grid-rule-soft, var(--os-grid-rule, var(--os-fill)));
+            vertical-align: middle;
+        }
+
+            & th[data-at="center"],
+            & td[data-at="center"] {
+                text-align: center;
+            }
+
+            & th[data-at="end"],
+            & td[data-at="end"] {
+                text-align: end;
+            }
+
+            & th[data-num="true"],
+            & td[data-num="true"] {
+                font-variant-numeric: tabular-nums;
+                white-space: nowrap;
+            }
+
+            & td[data-num="true"] {
+                font-weight: 700;
+            }
+
+        & tfoot td {
+            padding: var(--os-grid-foot-cell-pad, 0.625rem 1rem);
+            font-weight: 700;
+            background: var(--os-grid-foot-bg, var(--os-fill));
+            border-block-start: 1px solid var(--os-grid-rule, var(--os-fill));
+        }
+
+            & tfoot td[data-num="true"] {
+                white-space: nowrap;
+            }
+
+        & tbody tr {
+            transition: background-color var(--os-speed) linear;
+        }
+
+            & tbody tr:hover {
+                background: color-mix(in oklch, currentColor var(--os-state-hover), transparent);
+            }
+
+            & tbody tr[data-click="true"] {
+                cursor: pointer;
+            }
+
+        & th[data-stick="end"],
+        & td[data-stick="end"] {
+            position: sticky;
+            inset-inline-end: 0;
+            z-index: 1;
+            border-inline-start: 1px solid var(--os-grid-rule-soft, var(--os-grid-rule, var(--os-fill)));
+        }
+
+        & th[data-stick="end"] {
+            background: linear-gradient(var(--os-grid-head-bg, var(--os-fill)), var(--os-grid-head-bg, var(--os-fill))), var(--os-grid-stick-bg, var(--os-card-bg, var(--os-bg)));
+        }
+
+        & td[data-stick="end"] {
+            background: var(--os-grid-stick-bg, var(--os-card-bg, var(--os-bg)));
+        }
+
+        & tbody tr:hover td[data-stick="end"] {
+            background: linear-gradient(color-mix(in oklch, currentColor var(--os-state-hover), transparent), color-mix(in oklch, currentColor var(--os-state-hover), transparent)), var(--os-grid-stick-bg, var(--os-card-bg, var(--os-bg)));
+        }
+    }
+
+    .os-grid-sort {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: inherit;
+        font: inherit;
+        letter-spacing: inherit;
+        cursor: pointer;
+
+        & .os-icon {
+            opacity: 0;
+            transition: opacity var(--os-speed) linear, rotate var(--os-speed) linear;
+        }
+
+        &:hover .os-icon {
+            opacity: 0.5;
+        }
+
+        &[data-sort] .os-icon {
+            opacity: 1;
+        }
+
+        &[data-sort="asc"] .os-icon {
+            rotate: 180deg;
+        }
+    }
+}

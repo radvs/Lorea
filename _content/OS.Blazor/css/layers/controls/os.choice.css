@@ -1,0 +1,76 @@
+@layer os.ctrls {
+    .os-choice {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--os-choice-gap, 0.25rem);
+        min-inline-size: 0;
+        padding: var(--os-choice-pad, 0.1875rem);
+        border: 1px solid var(--os-choice-border, var(--os-field-border, var(--os-border)));
+        border-radius: var(--os-field-radius, var(--os-radius));
+        background: var(--os-choice-bg, var(--os-field-bg, var(--os-bg)));
+    }
+
+    .os-field[data-invalid="true"] .os-choice {
+        border-color: var(--os-field-invalid, currentColor);
+    }
+
+    .os-choice-item {
+        position: relative;
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--os-gap);
+        min-inline-size: 0;
+        padding: var(--os-choice-item-pad, 0.3125rem 0.75rem);
+        border-radius: calc(var(--os-field-radius, var(--os-radius)) - 0.125rem);
+        color: var(--os-choice-fg, inherit);
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color var(--os-speed) linear, color var(--os-speed) linear;
+
+        &:hover {
+            background: var(--os-choice-hover, color-mix(in srgb, currentColor var(--os-state-hover), transparent));
+            color: var(--os-choice-fg-hover, var(--os-choice-fg, inherit));
+        }
+
+        &:has(:checked) {
+            background: var(--os-choice-on-bg, var(--os-invert-bg));
+            color: var(--os-choice-on-fg, var(--os-invert-fg));
+            font-weight: 600;
+        }
+
+        &:has(:focus-visible) {
+            outline: 2px solid var(--os-field-focus, currentColor);
+            outline-offset: 1px;
+        }
+
+        &:has(:disabled) {
+            opacity: var(--os-state-off);
+            cursor: not-allowed;
+        }
+    }
+
+    .os-choice-icon {
+        flex: none;
+    }
+
+    .os-choice-input {
+        position: absolute;
+        inset: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        margin: 0;
+        opacity: 0;
+        cursor: inherit;
+    }
+
+    @media (forced-colors: active) {
+        .os-choice-item:has(:checked) {
+            forced-color-adjust: none;
+            background: Highlight !important;
+            color: HighlightText !important;
+        }
+    }
+}

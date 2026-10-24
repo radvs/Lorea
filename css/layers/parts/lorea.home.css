@@ -1,0 +1,438 @@
+@layer lorea.parts {
+    .home {
+        padding-block-end: clamp(2rem, 4vw, 3rem);
+    }
+
+    /* --- Opening ---------------------------------------------------------- */
+
+    .home-intro {
+        padding-block: clamp(1.25rem, 3.5vw, 2.25rem);
+        border-block-end: 1px solid var(--lorea-rule-dark);
+    }
+
+    .home-intro-main {
+        max-inline-size: 58rem;
+    }
+
+    .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 0 0.8rem;
+        color: var(--lorea-muted);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+        inline-size: 1.4rem;
+        block-size: 1px;
+        background: var(--lorea-accent);
+        content: "";
+    }
+
+    .home-title {
+        margin: 0;
+        color: var(--lorea-heading);
+        font-size: clamp(1.65rem, 3vw, 2.3rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        text-wrap: balance;
+    }
+
+    .home-deck {
+        max-inline-size: 36rem;
+        margin: 0.65rem 0 0;
+        color: var(--lorea-muted);
+        font-size: clamp(0.88rem, 1.1vw, 0.95rem);
+        line-height: 1.75;
+        text-wrap: pretty;
+    }
+
+    .home-explorer {
+        padding-block-start: clamp(1.25rem, 2.8vw, 2rem);
+    }
+
+    .explorer-head {
+        display: grid;
+        grid-template-columns: minmax(14rem, 1fr) auto;
+        align-items: center;
+        gap: 0.75rem 1rem;
+        padding-block-end: 0.8rem;
+        border-block-end: 1px solid var(--lorea-rule-dark);
+    }
+
+    .explorer-head h2 {
+        margin: 0;
+        color: var(--lorea-heading);
+        font-size: clamp(1.2rem, 2vw, 1.45rem);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        line-height: 1.35;
+    }
+
+    .home-search {
+        position: relative;
+        min-inline-size: 0;
+    }
+
+    .home-search-input {
+        inline-size: 100%;
+    }
+
+    .home-search-input input::placeholder {
+        font-family: inherit;
+        font-size: 0.82em;
+        font-weight: 300;
+    }
+
+    .home-search-results {
+        position: absolute;
+        z-index: 5;
+        inset-block-start: calc(100% + 0.5rem);
+        inset-inline: 0;
+        max-block-size: min(70vh, 32rem);
+        overflow-y: auto;
+        padding: 0.35rem 0;
+        border-block-start: 1px solid var(--lorea-rule-dark);
+        background: var(--lorea-chrome);
+    }
+
+    .home-search-group + .home-search-group {
+        margin-block-start: 0.25rem;
+        padding-block-start: 0.25rem;
+        border-block-start: 1px solid var(--lorea-rule);
+    }
+
+    .home-search-group h3 {
+        margin: 0;
+        padding: 0.35rem 0.75rem 0.2rem;
+        color: var(--lorea-muted);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
+    .home-search-group ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .home-search-group a {
+        display: grid;
+        gap: 0.1rem;
+        padding: 0.45rem 0.75rem;
+        color: var(--lorea-ink);
+        text-decoration: none;
+    }
+
+    .home-search-group a:hover {
+        background: var(--lorea-hover);
+    }
+
+    .home-search-group a:focus-visible {
+        outline: 2px solid var(--lorea-accent);
+        outline-offset: -2px;
+        background: var(--lorea-hover);
+    }
+
+    .home-search-title {
+        color: var(--lorea-heading);
+        font-size: 0.8rem;
+        font-weight: 650;
+    }
+
+    .home-search-detail {
+        overflow: hidden;
+        color: var(--lorea-muted);
+        font-size: 0.72rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .home-search-empty {
+        --os-state-pad: 0.75rem;
+        --os-state-gap: 0;
+        --os-state-measure: none;
+        color: var(--lorea-muted);
+        font-size: 0.8rem;
+    }
+
+    .home-search-empty .os-state-msg,
+    .catalog-empty .os-state-msg {
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: start;
+        opacity: 1;
+    }
+
+    .explorer-view {
+        display: inline-flex;
+        align-items: stretch;
+        gap: 2px;
+        padding: 3px;
+        border: 1px solid var(--lorea-rule-dark);
+        background: var(--lorea-chrome);
+    }
+
+    .explorer-mode {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        min-block-size: 2.5rem;
+        padding: 0.35rem 0.7rem;
+        border: 0;
+        background: transparent;
+        color: var(--lorea-muted);
+        font-family: inherit;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 140ms ease-out, color 140ms ease-out;
+    }
+
+    .explorer-mode[aria-current="location"] {
+        background: var(--lorea-accent-soft);
+        color: var(--lorea-link);
+        font-weight: 700;
+    }
+
+    .explorer-mode:hover {
+        background: var(--lorea-hover);
+        color: var(--lorea-link);
+    }
+
+    .explorer-mode[aria-current="location"]:hover {
+        background: var(--lorea-accent-soft);
+    }
+
+    .explorer-mode-icon {
+        display: inline-flex;
+        color: inherit;
+    }
+
+    .explorer-mode-icon svg {
+        inline-size: 1.05rem;
+        block-size: 1.05rem;
+    }
+
+    .explorer-mode:focus-visible {
+        outline: 2px solid var(--lorea-accent);
+        outline-offset: 2px;
+        z-index: 1;
+    }
+
+    .home #packages.explorer-panel {
+        display: none;
+    }
+
+    .home-explorer[data-view="packages"] #packages.explorer-panel {
+        display: block;
+        animation: explorer-panel-enter 180ms ease-out both;
+    }
+
+    .home-explorer[data-view="packages"] #map.explorer-panel {
+        display: none;
+    }
+
+    .home-explorer[data-view="map"] #map.explorer-panel {
+        animation: explorer-panel-enter 180ms ease-out both;
+    }
+
+    @keyframes explorer-panel-enter {
+        from {
+            opacity: 0;
+            transform: translateY(0.35rem);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .home-explorer[data-view="packages"] #packages.explorer-panel,
+        .home-explorer[data-view="map"] #map.explorer-panel {
+            animation: none;
+        }
+    }
+
+    /* --- Package catalog -------------------------------------------------- */
+
+    .catalog {
+        padding-block: clamp(2rem, 4vw, 3rem) 0;
+    }
+
+    .catalog-groups {
+        --os-acc-gap: 1.25rem;
+        --os-acc-head-size: 2.5rem;
+        --os-acc-head-pad: 0.25rem 0;
+        --os-acc-pad: 0;
+    }
+
+    .catalog-groups .os-acc-body[inert] {
+        content-visibility: hidden;
+    }
+
+    .catalog-groups .os-card.os-acc-item {
+        --os-card-pad: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .catalog-groups .os-acc-head {
+        padding-inline-end: 0;
+    }
+
+    .catalog-groups .os-acc-toggle {
+        padding-inline: 0;
+    }
+
+    .catalog-groups .os-acc-text {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.65rem;
+    }
+
+    .catalog-groups .os-acc-title {
+        color: var(--lorea-muted);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+    }
+
+    .catalog-groups .os-acc-badge {
+        display: inline-flex;
+        align-items: center;
+        margin-inline-start: auto;
+    }
+
+    .catalog-list {
+        display: grid;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .catalog-card {
+        --os-card-pad: 0;
+        --os-card-radius: 0;
+        --os-card-border: var(--lorea-rule);
+        --os-card-bg: transparent;
+        --os-card-overflow: hidden;
+    }
+
+    .catalog-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 0.15rem 1.5rem;
+        padding: 0.72rem 0.75rem;
+        text-decoration: none;
+    }
+
+    .catalog-row:hover {
+        background: var(--lorea-hover);
+    }
+
+    .catalog-row-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.15rem 0.75rem;
+        grid-column: 1;
+    }
+
+    .catalog-name {
+        color: var(--lorea-muted);
+        font-family: var(--lorea-code-font);
+        font-size: 0.76rem;
+        font-weight: 500;
+        unicode-bidi: isolate;
+    }
+
+    .catalog-title {
+        color: var(--lorea-ink);
+        font-size: 0.87rem;
+        font-weight: 600;
+    }
+
+    .catalog-row:hover .catalog-title {
+        color: var(--lorea-link);
+    }
+
+    .catalog-row:hover .catalog-name {
+        color: var(--lorea-heading);
+    }
+
+    .catalog-summary {
+        grid-column: 1;
+        max-inline-size: 52rem;
+        color: var(--lorea-muted);
+        font-size: 0.8rem;
+        line-height: 1.65;
+    }
+
+    .catalog-meta {
+        display: inline-flex;
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
+        align-items: center;
+        gap: 0.25rem;
+        color: var(--lorea-muted);
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .catalog-empty {
+        --os-state-pad: 2rem 0;
+        --os-state-gap: 0;
+        --os-state-measure: none;
+        color: var(--lorea-muted);
+    }
+
+    @media (max-width: 47.99rem) {
+        .explorer-head {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .explorer-view {
+            inline-size: 100%;
+        }
+
+        .explorer-mode {
+            flex: 1;
+            min-block-size: 2.75rem;
+        }
+
+        .home-search-input input {
+            min-block-size: 2.5rem;
+        }
+
+        .home-search {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .catalog-row {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .catalog-meta {
+            grid-column: 1;
+            grid-row: auto;
+            align-self: start;
+            margin-block-start: 0.2rem;
+        }
+    }
+}

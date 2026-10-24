@@ -1,0 +1,198 @@
+@layer lorea.parts {
+    /* --- At a glance ------------------------------------------------------ */
+
+    .glance {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        border-block-start: 1px solid var(--lorea-rule);
+        border-inline-start: 1px solid var(--lorea-rule);
+    }
+
+    .glance-item {
+        padding: 0.9rem 1rem;
+        border-inline-end: 1px solid var(--lorea-rule);
+        border-block-end: 1px solid var(--lorea-rule);
+        background: var(--lorea-bg);
+    }
+
+    .glance-item b {
+        display: block;
+        margin-block-end: 0.2rem;
+        color: var(--lorea-heading);
+        font-size: 0.92rem;
+        font-weight: 650;
+    }
+
+    .glance-item span {
+        color: var(--lorea-muted);
+        font-size: 0.86rem;
+        line-height: 1.75;
+    }
+
+    /* --- Full explanation ------------------------------------------------- */
+
+    .parts {
+        --os-acc-gap: 0;
+    }
+
+    .parts .os-card.os-acc-item {
+        --os-card-pad: 0;
+        border: 0;
+        border-block-start: 1px solid var(--lorea-rule);
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .parts .os-acc-item:last-child {
+        border-block-end: 1px solid var(--lorea-rule);
+    }
+
+    .parts .os-acc-toggle {
+        min-block-size: 2.9rem;
+        padding: 0.45rem 0.1rem;
+    }
+
+    .parts .os-acc-pad {
+        padding: 0 0 1rem;
+    }
+
+    .parts .os-acc-title {
+        color: var(--lorea-heading);
+        font-weight: 600;
+        white-space: normal;
+    }
+
+    .parts p {
+        max-inline-size: 46rem;
+        margin: 0 0 0.75rem;
+        line-height: 1.9;
+    }
+
+    .parts p:last-child {
+        margin-block-end: 0;
+    }
+
+    /* --- API list --------------------------------------------------------- */
+
+    .api-list {
+        --os-acc-gap: 0.4rem;
+    }
+
+    .api-list .os-card.os-acc-item {
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .api-list .os-acc-toggle {
+        min-block-size: 2.75rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .api-list .os-acc-title {
+        display: grid;
+        gap: 0.15rem;
+        font-weight: 400;
+        white-space: normal;
+    }
+
+    .api-list .os-acc-pad {
+        padding: 0;
+    }
+
+    .api-signature {
+        justify-self: start;
+        color: var(--lorea-heading);
+        font-family: var(--lorea-code-font) !important;
+        font-size: 0.85rem;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+    }
+
+    .api-type-note {
+        color: var(--lorea-muted);
+        font-size: 0.85rem;
+        line-height: 1.7;
+        white-space: normal;
+    }
+
+    .api-obsolete {
+        margin: 0;
+        color: var(--lorea-muted);
+        font-size: 0.8rem;
+    }
+
+    .api-list .api-obsolete {
+        padding: 0.5rem 0.8rem;
+    }
+
+    /* --- API table -------------------------------------------------------- */
+
+    .api-reference {
+        inline-size: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        text-align: start;
+    }
+
+    .api-reference th,
+    .api-reference td {
+        padding: 0.5rem 0.8rem;
+        border-block-start: 1px solid var(--lorea-rule);
+        font-size: 0.85rem;
+        line-height: 1.65;
+        overflow-wrap: anywhere;
+        text-align: start;
+        vertical-align: top;
+    }
+
+    .api-reference thead th {
+        color: var(--lorea-muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: var(--lorea-chrome);
+    }
+
+    .api-reference tbody th {
+        color: var(--lorea-heading);
+        font-weight: 600;
+    }
+
+    .api-reference tbody tr:hover {
+        background: var(--lorea-hover);
+    }
+
+    .api-reference code {
+        display: block;
+        color: var(--lorea-heading);
+        font-family: var(--lorea-code-font) !important;
+        font-size: 0.78rem;
+        text-align: left;
+    }
+
+    .api-reference th code + code {
+        margin-block-start: 0.35rem;
+    }
+
+    .api-reference bdi {
+        font-family: var(--lorea-font-en) !important;
+    }
+
+    @media (max-width: 47.99rem) {
+        .api-reference th,
+        .api-reference td {
+            padding-inline: 0.4rem;
+            font-size: 0.76rem;
+        }
+
+        .api-reference code {
+            font-size: 0.7rem;
+        }
+
+        .api-reference thead th {
+            font-size: 0.62rem;
+        }
+    }
+}
