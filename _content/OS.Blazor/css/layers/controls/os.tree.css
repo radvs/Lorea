@@ -1,0 +1,70 @@
+@layer os.ctrls {
+    .os-tree,
+    .os-tree-kids {
+        display: grid;
+        gap: 0.125rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .os-tree-item {
+        --os-tree-step: 1.25rem;
+    }
+
+    .os-tree-row {
+        display: flex;
+        align-items: center;
+        gap: var(--os-gap);
+        min-block-size: 2rem;
+        padding-inline-start: calc(var(--os-tree-depth, 0) * var(--os-tree-step));
+    }
+
+    .os-tree-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        padding: 0;
+        border: 0;
+        border-radius: var(--os-radius);
+        background: none;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .os-tree-toggle svg {
+        rotate: -90deg;
+        transition: rotate var(--os-speed) linear;
+    }
+
+    .os-tree-toggle[data-open="true"] svg {
+        rotate: 0deg;
+    }
+
+    [dir="rtl"] .os-tree-toggle svg {
+        rotate: 90deg;
+    }
+
+    [dir="rtl"] .os-tree-toggle[data-open="true"] svg {
+        rotate: 0deg;
+    }
+
+    .os-tree-gap {
+        flex: 0 0 auto;
+        inline-size: 1.5rem;
+    }
+
+    .os-tree-body {
+        flex: 1 1 auto;
+        min-inline-size: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .os-tree-toggle svg {
+            transition: none;
+        }
+    }
+}

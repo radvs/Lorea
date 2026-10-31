@@ -1,0 +1,121 @@
+@layer os.ctrls {
+    .os-select-input {
+        appearance: none;
+        cursor: pointer;
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+
+        & option {
+            background-color: Canvas;
+            color: CanvasText;
+        }
+    }
+
+    @supports (appearance: base-select) {
+        .os-select-input,
+        .os-select-input::picker(select) {
+            appearance: base-select;
+        }
+
+        .os-select-field {
+            anchor-scope: --os-select-box;
+
+            & .os-field-box {
+                anchor-name: --os-select-box;
+            }
+        }
+
+        .os-select-input {
+            padding: 1px 0;
+            border: 0;
+            background: none;
+            min-block-size: auto;
+            text-align: start;
+
+            &::picker-icon {
+                display: none;
+            }
+
+            &::picker(select) {
+                position-anchor: --os-select-box;
+                position-area: none;
+                position-try-fallbacks: flip-block;
+                position-try-order: normal;
+                inset: auto;
+                top: anchor(bottom);
+                left: anchor(left);
+                inline-size: anchor-size(inline);
+                min-inline-size: 0;
+                margin: 0.375rem 0;
+                padding: 0.25rem;
+                max-block-size: var(--os-select-max, 20rem);
+                border: 1px solid var(--os-dropdown-border, var(--os-border));
+                border-radius: var(--os-dropdown-radius, var(--os-radius));
+                background: var(--os-dropdown-bg, Canvas);
+                color: var(--os-dropdown-fg, CanvasText);
+                box-shadow: var(--os-dropdown-shadow, 0 4px 16px rgb(0 0 0 / 0.12));
+                overflow: auto;
+                scrollbar-width: thin;
+                scrollbar-color: var(--os-dropdown-scroll, color-mix(in oklab, currentColor 30%, transparent)) transparent;
+                opacity: 0;
+                scale: 0.96;
+                transition: opacity var(--os-speed) ease, scale var(--os-speed) ease,
+                    display var(--os-speed) allow-discrete, overlay var(--os-speed) allow-discrete;
+            }
+
+            &:open::picker(select) {
+                opacity: 1;
+                scale: 1;
+            }
+
+            & option {
+                display: flex;
+                align-items: center;
+                gap: var(--os-gap);
+                padding: var(--os-dropdown-option-pad, 0.5rem 0.625rem);
+                border-radius: calc(var(--os-dropdown-radius, var(--os-radius)) - 0.25rem);
+                background: none;
+                color: inherit;
+                cursor: pointer;
+
+                &:hover,
+                &:focus-visible {
+                    outline: none;
+                    background: var(--os-dropdown-hover, var(--os-fill));
+                }
+
+                &:checked {
+                    font-weight: 600;
+                }
+
+                &::checkmark {
+                    order: 1;
+                    margin-inline-start: auto;
+                    color: var(--os-dropdown-check, currentColor);
+                }
+
+                &[value=""] {
+                    opacity: var(--os-muted);
+
+                    &::checkmark {
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+
+        @starting-style {
+            .os-select-input:open::picker(select) {
+                opacity: 0;
+                scale: 0.96;
+            }
+        }
+    }
+
+    .os-select-arrow {
+        flex: none;
+        pointer-events: none;
+    }
+}

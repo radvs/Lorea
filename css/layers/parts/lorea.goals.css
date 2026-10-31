@@ -1,0 +1,105 @@
+@layer lorea.parts {
+    .goals {
+        padding-block: 1.75rem 0.5rem;
+    }
+
+    .goals-title {
+        margin: 0 0 1rem;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-section);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .goals-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.75rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .goal {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+        gap: 0.25rem 0.9rem;
+        block-size: 100%;
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--lorea-rule-dark);
+        background: var(--lorea-bg);
+        color: var(--lorea-ink);
+        text-decoration: none;
+    }
+
+    .goal:hover {
+        border-color: var(--lorea-accent);
+        background: var(--lorea-hover);
+    }
+
+    .goal:focus-visible {
+        outline: 3px solid var(--lorea-accent);
+        outline-offset: 2px;
+    }
+
+    .goal-icon {
+        display: inline-flex;
+        grid-row: 1 / span 2;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border: 1px solid var(--lorea-rule-dark);
+        background: var(--lorea-chrome);
+        color: var(--lorea-accent);
+    }
+
+    .goal-body {
+        display: grid;
+        gap: 0.3rem;
+        padding-inline-end: 4.5rem;
+    }
+
+    .goal-title {
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-title);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .goal-text {
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-body);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .goal-type {
+        position: absolute;
+        inset-block-start: 0.7rem;
+        inset-inline-end: 0.8rem;
+        padding: 0.05rem 0.4rem;
+        border: 1px solid var(--lorea-rule-dark);
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-meta);
+        font-weight: var(--lorea-weight-strong);
+        letter-spacing: var(--lorea-tracking-overline);
+        text-transform: uppercase;
+    }
+
+    .goal[data-type="chapter"] .goal-type {
+        border-color: var(--lorea-accent);
+        color: var(--lorea-accent);
+    }
+
+    @media (min-width: 38rem) {
+        .goals-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 64rem) {
+        .goals-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+}

@@ -1,0 +1,1591 @@
+/* Latin digits for counts inside Persian text: the Persian font draws every digit as a Persian one. */
+@font-face {
+    font-family: lorea-latin-digits;
+    src: local("Segoe UI"), local("Arial"), local("Helvetica");
+    unicode-range: U+0030-0039;
+}
+
+@layer lorea.parts {
+    .doc-h3 {
+        margin: 1.5rem 0 0.6rem;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-desc);
+        font-weight: var(--lorea-weight-strong);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .doc-section> :is(.sample, .doc-h3):first-child,
+    .sample:first-of-type>.doc-h3 {
+        margin-block-start: 0;
+    }
+
+    /* --- Package hero ----------------------------------------------------- */
+
+    .pkg-hero {
+        --hue: var(--lorea-accent);
+        margin-block-end: 1.25rem;
+        padding: 0.8rem 1rem 0.75rem;
+        border: 1px solid var(--lorea-rule);
+        border-block-start: 3px solid var(--hue);
+        border-radius: 0.6rem;
+        background: var(--lorea-chrome);
+    }
+
+    .pkg-hero .page-head {
+        --os-head-gap: 0.35rem;
+        --os-head-size: clamp(1.4rem, 2.4vw, 1.7rem);
+        --os-head-subtitle-size: 0.9rem;
+        padding-block: 0;
+    }
+
+    .pkg-hero .page-head .os-head-subtitle {
+        margin-block-start: 0.25rem;
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .pkg-hero .page-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        column-gap: 1rem;
+    }
+
+    .pkg-hero .os-head-titles {
+        display: contents;
+    }
+
+    .pkg-hero .os-head-title {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .pkg-hero .os-head-actions {
+        grid-column: 2;
+        grid-row: 1;
+        margin: 0;
+    }
+
+    .pkg-hero .page-head .os-head-subtitle {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .pkg-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        margin-block-start: 0.55rem;
+    }
+
+    .pkg-name {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding-inline-start: 0.5rem;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 999px;
+        background: var(--lorea-bg);
+    }
+
+    .pkg-name .os-icon {
+        inline-size: 0.85rem;
+        block-size: 0.85rem;
+    }
+
+    .pkg-name code {
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-desc);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .pkg-group::before {
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        margin-inline-end: 0.4rem;
+        border-radius: 50%;
+        background: var(--hue);
+        content: "";
+    }
+
+    /* --- Page rail: a progress line beside the sections ------------------------ */
+
+    .page-rail-label {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .pkg-grid {
+        --lorea-rail-w: 17.5rem;
+    }
+
+    /* The rail and the reading column fill the page width together, so no empty band opens between them on a wide screen. */
+    @media (min-width: 64rem) {
+        .doc-grid.pkg-grid {
+            grid-template-columns: var(--lorea-rail-w) minmax(0, 1fr);
+        }
+
+        .doc-grid.pkg-grid .doc-main {
+            max-inline-size: none;
+            margin-inline: 0;
+        }
+    }
+
+    /* The rail is a card of its own, sized to the content column beside it. */
+    .page-rail {
+        padding: 1.1rem 1.2rem;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0.7rem;
+        background: var(--lorea-chrome);
+    }
+
+    .page-rail ul {
+        margin: 0;
+        padding: 0;
+        border-inline-start: 2px solid var(--lorea-rule-dark);
+        list-style: none;
+    }
+
+    .page-rail li {
+        position: relative;
+    }
+
+    /* The line beside a section fills with the accent once the reader has reached it. */
+    .page-rail li::before {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: -2px;
+        inline-size: 2px;
+        background: transparent;
+        content: "";
+        transition: background-color 160ms ease;
+    }
+
+    .page-rail li:has(a.is-passed)::before,
+    .page-rail li:has(a.is-current)::before {
+        background: var(--lorea-accent);
+    }
+
+    .page-rail a {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        min-block-size: 2.7rem;
+        padding-block: 0.4rem;
+        padding-inline: 1rem 0.3rem;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-meta);
+        text-decoration: none;
+        transition: color 120ms linear;
+    }
+
+    .pr-label {
+        min-inline-size: 0;
+    }
+
+    .page-rail .pr-icon {
+        flex: none;
+        opacity: 0.75;
+        transition: opacity 140ms ease, color 140ms ease;
+    }
+
+    .page-rail a:hover {
+        color: var(--lorea-heading);
+    }
+
+    .page-rail a:hover .pr-icon {
+        opacity: 1;
+    }
+
+    .page-rail a.is-current {
+        color: var(--lorea-heading);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .page-rail a.is-current .pr-icon {
+        color: var(--lorea-accent);
+    }
+
+    .page-rail a.is-current .pr-icon {
+        opacity: 1;
+    }
+
+    .page-rail a:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: -2px;
+        border-radius: 2px;
+    }
+
+    /* --- Samples: short cards, tabs for many, a height cap for long code ---- */
+
+    .sample-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+        gap: 1rem;
+    }
+
+    .sample-card {
+        min-inline-size: 0;
+        overflow: hidden;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0.6rem;
+        background: var(--lorea-chrome);
+    }
+
+    .sample-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.35rem 0.4rem 0.35rem 0.9rem;
+        border-block-end: 1px solid var(--lorea-rule);
+    }
+
+    .sample-title {
+        margin: 0;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-desc);
+        font-weight: var(--lorea-weight-strong);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .sample-tools {
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .sample-lang {
+        padding: 0 0.5rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 999px;
+        color: var(--lorea-muted);
+        font-family: var(--lorea-code-font);
+        font-size: var(--lorea-text-meta);
+    }
+
+    .sample-card .os-code-head {
+        display: none;
+    }
+
+    .sample-card .os-code-box {
+        border: 0;
+        background: var(--lorea-bg);
+    }
+
+    .sample-card .os-code-box pre {
+        padding: 0.8rem 1rem;
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    /* The output is a strip under the code, never a column beside it. */
+    .sample-card .os-code-fig[data-output="true"] {
+        display: block;
+    }
+
+    .sample-card .os-code-output {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.2rem 0.75rem;
+        padding: 0.5rem 0.9rem;
+        border: 0;
+        border-block-start: 1px solid var(--lorea-rule);
+        background: var(--lorea-chrome);
+        box-shadow: none;
+    }
+
+    .sample-card .os-code-output-label::after {
+        margin-inline-start: 0.4rem;
+        content: "\2192";
+        font-family: var(--lorea-font-en);
+    }
+
+    .lorea[lang="fa"] .sample-card .os-code-output-label::after {
+        content: "\2190";
+    }
+
+    .sample-card .os-code-output samp {
+        font-family: var(--lorea-code-font) !important;
+        font-size: var(--lorea-text-desc);
+    }
+
+    .sample-body.is-long:not(.is-open) .os-code-box {
+        position: relative;
+        max-block-size: 18rem;
+        overflow: hidden;
+    }
+
+    .sample-body.is-long:not(.is-open) .os-code-box::after {
+        position: absolute;
+        inset: auto 0 0;
+        block-size: 4.5rem;
+        background: linear-gradient(to top, var(--lorea-bg), transparent);
+        content: "";
+        pointer-events: none;
+    }
+
+    .sample-more {
+        display: block;
+        inline-size: 100%;
+        padding: 0.4rem;
+        border: 0;
+        border-block-start: 1px solid var(--lorea-rule);
+        background: var(--lorea-chrome);
+        color: var(--lorea-link);
+        font: inherit;
+        font-size: var(--lorea-text-desc);
+        cursor: pointer;
+    }
+
+    .sample-more:hover {
+        background: var(--lorea-hover);
+    }
+
+    .sample-more:focus-visible,
+    .sample-chip:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: -2px;
+    }
+
+    .sample-tabs {
+        display: flex;
+        gap: 0.4rem;
+        margin-block-end: 0.8rem;
+        padding-block-end: 0.25rem;
+        overflow-x: auto;
+    }
+
+    .sample-chip {
+        flex: none;
+        padding: 0.2rem 0.85rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--lorea-muted);
+        font: inherit;
+        font-size: var(--lorea-text-desc);
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .sample-chip:hover {
+        color: var(--lorea-heading);
+    }
+
+    .sample-chip[aria-selected="true"] {
+        border-color: var(--lorea-accent);
+        background: var(--lorea-accent-soft);
+        color: var(--lorea-accent);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    /* --- API reference: search, kind filter and one table per topic --------- */
+
+    .api-tools {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.6rem;
+        margin-block-end: 1rem;
+    }
+
+    .api-search {
+        flex: 1 1 14rem;
+        min-inline-size: 0;
+        padding: 0.45rem 0.8rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 0.5rem;
+        background: var(--lorea-chrome);
+        color: var(--lorea-heading);
+        font: inherit;
+        font-size: var(--lorea-text-desc);
+    }
+
+    .api-search::placeholder {
+        color: var(--lorea-muted);
+    }
+
+    .api-search:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: 1px;
+    }
+
+    .api-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    .api-filter {
+        padding: 0.2rem 0.8rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--lorea-muted);
+        font: inherit;
+        font-size: var(--lorea-text-desc);
+        cursor: pointer;
+    }
+
+    .api-filter:hover {
+        color: var(--lorea-heading);
+    }
+
+    .api-filter[aria-pressed="true"] {
+        border-color: var(--lorea-accent);
+        background: var(--lorea-accent-soft);
+        color: var(--lorea-accent);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .api-filter:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: 1px;
+    }
+
+    .api-groups {
+        --os-acc-gap: 0.5rem;
+    }
+
+    .api-groups .os-acc-item {
+        border-color: var(--lorea-rule);
+        border-radius: 0.6rem;
+        background: var(--lorea-chrome);
+        transition: border-color 140ms ease;
+    }
+
+    .api-groups .os-acc-item:hover,
+    .api-groups .os-acc-item[data-open="true"] {
+        border-color: var(--lorea-accent);
+    }
+
+    .api-groups .os-acc-toggle {
+        gap: 0.75rem;
+        min-block-size: 3.4rem;
+        padding: 0.45rem 0.9rem;
+    }
+
+    /* The chevron sits in a small round button so the row reads as something to open. */
+    .api-groups .os-acc-chev {
+        align-items: center;
+        justify-content: center;
+        inline-size: 1.6rem;
+        block-size: 1.6rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 50%;
+        color: var(--lorea-muted);
+        transition: rotate 280ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .api-groups .os-acc-item:hover .os-acc-chev,
+    .api-groups .os-acc-item[data-open="true"] .os-acc-chev {
+        border-color: var(--lorea-accent);
+        color: var(--lorea-accent);
+    }
+
+    .api-groups .os-acc-lead {
+        align-items: center;
+        justify-content: center;
+        inline-size: 2.1rem;
+        block-size: 2.1rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 0.5rem;
+        background: var(--lorea-bg);
+        color: var(--lorea-accent);
+    }
+
+    .api-groups .os-acc-text {
+        gap: 0.05rem;
+    }
+
+    .api-groups .os-acc-title {
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-title);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .api-groups .os-acc-caption {
+        color: var(--lorea-muted);
+        font-family: var(--lorea-code-font);
+        font-size: var(--lorea-text-meta);
+        opacity: 1;
+        unicode-bidi: isolate;
+    }
+
+    .api-kinds {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .api-kind-count {
+        --kc: var(--lorea-accent);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.1rem 0.5rem 0.1rem 0.35rem;
+        border: 1px solid var(--kc);
+        border-radius: 999px;
+        color: var(--lorea-heading);
+        font-family: var(--lorea-code-font);
+        font-size: var(--lorea-text-meta);
+        font-variant-numeric: tabular-nums;
+        direction: ltr;
+    }
+
+    .api-kind-count b {
+        color: var(--kc);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .api-kind-count[data-kind="enum"] {
+        --kc: var(--lorea-layer-output);
+    }
+
+    .api-kind-count[data-kind="interface"] {
+        --kc: var(--lorea-layer-data);
+    }
+
+    .api-rows {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .api-rows li+li {
+        border-block-start: 1px solid var(--lorea-rule);
+    }
+
+    .api-row {
+        display: grid;
+        grid-template-columns: 1.7rem minmax(8rem, 12rem) minmax(0, 1fr) 7.5rem 1rem;
+        grid-template-areas: "kind name desc decl go";
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0.9rem;
+        color: inherit;
+        text-decoration: none;
+        transition: background-color 120ms linear;
+    }
+
+    .api-row:hover {
+        background: var(--lorea-hover);
+    }
+
+    .api-row:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: -2px;
+    }
+
+    .api-kind {
+        grid-area: kind;
+        --kc: var(--lorea-accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 1.55rem;
+        block-size: 1.55rem;
+        border: 1px solid var(--kc);
+        border-radius: 0.4rem;
+        color: var(--kc);
+        font-family: var(--lorea-code-font);
+        font-size: var(--lorea-text-meta);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .api-kind[data-kind="enum"] {
+        --kc: var(--lorea-layer-output);
+    }
+
+    .api-kind[data-kind="interface"] {
+        --kc: var(--lorea-layer-data);
+    }
+
+    .api-name {
+        grid-area: name;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-body);
+        font-weight: var(--lorea-weight-strong);
+        text-align: start;
+        unicode-bidi: isolate;
+    }
+
+    .api-desc {
+        grid-area: desc;
+        min-inline-size: 0;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .api-decl {
+        grid-area: decl;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-meta);
+        text-align: end;
+        white-space: nowrap;
+        unicode-bidi: isolate;
+    }
+
+    .api-go {
+        grid-area: go;
+        color: var(--lorea-muted);
+        font-family: var(--lorea-font-en);
+    }
+
+    .api-go::after {
+        content: "\2192";
+    }
+
+    .lorea[lang="fa"] .api-go::after {
+        content: "\2190";
+    }
+
+    .api-row:hover .api-go {
+        color: var(--lorea-accent);
+    }
+
+    @media (max-width: 47.99rem) {
+        .api-row {
+            grid-template-columns: 1.7rem minmax(0, 1fr) auto;
+            grid-template-areas:
+                "kind name decl"
+                "kind desc desc";
+            align-items: start;
+            row-gap: 0.15rem;
+        }
+
+        .api-kind {
+            align-self: start;
+        }
+
+        .api-decl {
+            align-self: center;
+        }
+
+        .api-desc:empty {
+            display: none;
+        }
+
+        .api-go {
+            display: none;
+        }
+    }
+
+    /* --- Related packages: one card, three tabs ------------------------------ */
+
+    .rel {
+        overflow: hidden;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0.6rem;
+        background: var(--lorea-chrome);
+    }
+
+    .rel-tabs {
+        display: flex;
+        overflow-x: auto;
+        border-block-end: 1px solid var(--lorea-rule);
+    }
+
+    .rel-tab {
+        flex: none;
+        padding: 0.6rem 1rem;
+        border: 0;
+        border-block-end: 2px solid transparent;
+        background: transparent;
+        color: var(--lorea-muted);
+        font: inherit;
+        font-size: var(--lorea-text-desc);
+        cursor: pointer;
+    }
+
+    .rel-tab:hover {
+        color: var(--lorea-heading);
+    }
+
+    .rel-tab[aria-selected="true"] {
+        border-block-end-color: var(--lorea-accent);
+        color: var(--lorea-heading);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .rel-tab:focus-visible,
+    .rel-more:focus-visible,
+    .rel-card:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: -2px;
+    }
+
+    .rel-count {
+        margin-inline-start: 0.4rem;
+        padding: 0 0.45rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 999px;
+        font-size: var(--lorea-text-meta);
+    }
+
+    .rel-empty {
+        margin: 0;
+        padding: 1rem;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-body);
+    }
+
+    .rel-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0.8rem;
+        list-style: none;
+    }
+
+    .rel-card {
+        display: grid;
+        gap: 0.1rem;
+        block-size: 100%;
+        padding: 0.55rem 0.75rem;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0.5rem;
+        background: var(--lorea-bg);
+        color: inherit;
+        text-decoration: none;
+        transition: border-color 140ms ease;
+    }
+
+    .rel-card:hover {
+        border-color: var(--lorea-accent);
+    }
+
+    .rel-card code {
+        color: var(--lorea-link);
+        font-size: var(--lorea-text-desc);
+        font-weight: var(--lorea-weight-strong);
+        text-align: start;
+        unicode-bidi: isolate;
+    }
+
+    .rel-card span {
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .rel-more {
+        display: block;
+        inline-size: 100%;
+        padding: 0.5rem;
+        border: 0;
+        border-block-start: 1px solid var(--lorea-rule);
+        background: transparent;
+        color: var(--lorea-link);
+        font: inherit;
+        font-size: var(--lorea-text-body);
+        cursor: pointer;
+    }
+
+    .rel-more:hover {
+        background: var(--lorea-hover);
+    }
+
+    /* The package page has no phone fold for this, so the card shows at every width there. */
+    .pkg-grid .doc-related {
+        display: block;
+        margin-block-start: clamp(2rem, 4vw, 3rem);
+    }
+
+    /* --- Topic page: tree rail, sample list, story ------------------------------ */
+
+    .trail-package {
+        display: grid;
+        gap: 0.1rem;
+        margin-block-end: 0.9rem;
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0.6rem;
+        background: var(--lorea-chrome);
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .trail-package:hover {
+        border-color: var(--lorea-accent);
+    }
+
+    .trail-package code {
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-desc);
+        font-weight: var(--lorea-weight-strong);
+        text-align: start;
+        unicode-bidi: isolate;
+    }
+
+    .trail-package span {
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-desc);
+    }
+
+    .trail-topics,
+    .trail-sections {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .trail-link {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.45rem;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-body);
+        line-height: var(--lorea-leading-meta);
+        text-decoration: none;
+        transition: color 120ms linear, background-color 120ms linear;
+    }
+
+    .trail-link:hover {
+        background: var(--lorea-hover);
+        color: var(--lorea-heading);
+    }
+
+    .trail-link:focus-visible,
+    .trail-sections a:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: -2px;
+    }
+
+    .trail-icon {
+        flex: none;
+        opacity: 0.8;
+    }
+
+    .trail-topic.is-current>.trail-link {
+        background: var(--lorea-accent-soft);
+        color: var(--lorea-heading);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .trail-topic.is-current .trail-icon {
+        color: var(--lorea-accent);
+        opacity: 1;
+    }
+
+    .trail-sections {
+        margin-block: 0.15rem 0.4rem;
+        margin-inline-start: 1.2rem;
+        border-inline-start: 2px solid var(--lorea-rule-dark);
+    }
+
+    .trail-sections li {
+        position: relative;
+    }
+
+    .trail-sections li::before {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: -2px;
+        inline-size: 2px;
+        background: transparent;
+        content: "";
+    }
+
+    .trail-sections li:has(a.is-passed)::before,
+    .trail-sections li:has(a.is-current)::before {
+        background: var(--lorea-accent);
+    }
+
+    .trail-sections a {
+        display: block;
+        padding: 0.3rem 0.9rem;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-body);
+        line-height: var(--lorea-leading-meta);
+        text-decoration: none;
+    }
+
+    .trail-sections a:hover {
+        color: var(--lorea-heading);
+    }
+
+    .trail-sections a.is-current {
+        color: var(--lorea-heading);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .sample-list {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .sample-note {
+        margin: 0;
+        padding: 0.55rem 0.9rem;
+        border-block-end: 1px solid var(--lorea-rule);
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-body);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    /* --- A story told as numbered steps -------------------------------------- */
+
+    .how {
+        display: grid;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .how li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 2.2rem minmax(0, 1fr);
+        column-gap: 0.9rem;
+        row-gap: 0.1rem;
+        padding-block-end: 1.1rem;
+    }
+
+    .how li:last-child {
+        padding-block-end: 0;
+    }
+
+    .how li:not(:last-child)::after {
+        position: absolute;
+        inset-block: 2.4rem 0.2rem;
+        inset-inline-start: calc(1.1rem - 1px);
+        inline-size: 2px;
+        background: repeating-linear-gradient(to bottom, var(--lorea-accent) 0 6px, transparent 6px 12px);
+        content: "";
+        opacity: 0.6;
+    }
+
+    .how-no {
+        display: inline-flex;
+        grid-row: 1 / span 2;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2.2rem;
+        block-size: 2.2rem;
+        border: 2px solid var(--lorea-accent);
+        border-radius: 50%;
+        background: var(--lorea-accent-soft);
+        color: var(--lorea-accent);
+        font-size: var(--lorea-text-title);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .how b {
+        align-self: end;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-desc);
+        font-weight: var(--lorea-weight-strong);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .how-text {
+        color: var(--lorea-ink);
+        font-size: var(--lorea-text-body);
+        line-height: var(--lorea-leading-body);
+    }
+
+    /* --- Topic page: one reading scale and a quieter palette ------------------ */
+
+    .topic-doc .doc-h2 {
+        margin-block-end: 1rem;
+        font-size: var(--lorea-text-section);
+    }
+
+    /* Titles 0.95rem, descriptions 0.75rem. */
+    .topic-doc :is(.how-text, .story-part p, .sample-note, .doc-lead, .glance-item span) {
+        color: var(--lorea-ink);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-body);
+    }
+
+    .topic-doc :is(.how b, .story-part h3, .glance-item b, .sample-title) {
+        font-size: var(--lorea-text-body);
+    }
+
+    /* The numbers carry no colour of their own; the accent stays for what is current or can be clicked. */
+    .topic-doc .how-no {
+        border-color: var(--lorea-rule-dark);
+        background: var(--lorea-chrome);
+        color: var(--lorea-heading);
+    }
+
+    .topic-doc .how li:not(:last-child)::after {
+        background: repeating-linear-gradient(to bottom, var(--lorea-rule-dark) 0 6px, transparent 6px 12px);
+        opacity: 1;
+    }
+
+    .topic-doc .sample-card,
+    .topic-doc .sample-note {
+        background: var(--lorea-bg);
+    }
+
+    .topic-doc .sample-head {
+        background: var(--lorea-chrome);
+    }
+
+    /* --- Flow as a row on wide screens, and a branching tree ----------------- */
+
+    @media (min-width: 48rem) {
+        .how {
+            grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+            column-gap: 0.5rem;
+        }
+
+        .how li {
+            grid-template-columns: minmax(0, 1fr);
+            padding-block-end: 0;
+            padding-inline-end: 1rem;
+        }
+
+        .how-no {
+            grid-row: auto;
+        }
+
+        .how li:not(:last-child)::after {
+            inset-block: calc(1.1rem - 1px) auto;
+            inset-inline: 3rem 0.4rem;
+            inline-size: auto;
+            block-size: 2px;
+            background: repeating-linear-gradient(to right, var(--lorea-rule-dark) 0 6px, transparent 6px 12px);
+        }
+    }
+
+    /* --- Scenario flow ---------------------------------------------------- */
+
+    .flow-rail {
+        --fr-dir: 1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .lorea[lang="fa"] .flow-rail {
+        --fr-dir: -1;
+    }
+
+    .fr-node {
+        --nl: var(--lorea-muted);
+        --ns: var(--lorea-hover);
+        position: relative;
+        display: grid;
+        align-content: start;
+        gap: 0.3rem;
+        min-inline-size: 0;
+        padding-inline-end: 1.4rem;
+    }
+
+    .fr-node[data-layer="data"] {
+        --nl: var(--lorea-layer-data);
+        --ns: var(--lorea-layer-data-soft);
+    }
+
+    .fr-node[data-layer="service"] {
+        --nl: var(--lorea-layer-service);
+        --ns: var(--lorea-layer-service-soft);
+    }
+
+    .fr-node[data-layer="output"] {
+        --nl: var(--lorea-layer-output);
+        --ns: var(--lorea-layer-output-soft);
+    }
+
+    .fr-dot {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border: 2px solid var(--nl);
+        border-radius: 50%;
+        background: var(--lorea-bg);
+        color: var(--nl);
+    }
+
+    .fr-node.is-here .fr-dot {
+        background: var(--ns);
+        box-shadow: 0 0 0 4px var(--ns);
+    }
+
+    /* The dashed rail leaves each dot and ends in an arrowhead at the next one. */
+    .fr-node:not(:last-child)::after {
+        position: absolute;
+        inset-block-start: calc(1.25rem - 1px);
+        inset-inline: 3.1rem 0.45rem;
+        block-size: 2px;
+        background: repeating-linear-gradient(to right, var(--nl) 0 6px, transparent 6px 12px);
+        background-size: 12px 2px;
+        content: "";
+    }
+
+    .fr-node:not(:last-child)::before {
+        position: absolute;
+        inset-block-start: calc(1.25rem - 0.25rem);
+        inset-inline-end: 0.45rem;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        border-block-start: 2px solid var(--nl);
+        border-inline-end: 2px solid var(--nl);
+        content: "";
+        transform: rotate(45deg);
+    }
+
+    .lorea[lang="fa"] .fr-node:not(:last-child)::before {
+        transform: rotate(-45deg);
+    }
+
+    .fr-label {
+        color: var(--nl);
+        font-size: var(--lorea-text-meta);
+        font-weight: var(--lorea-weight-strong);
+        letter-spacing: var(--lorea-tracking-overline);
+    }
+
+    .lorea[lang="fa"] .fr-label {
+        letter-spacing: normal;
+    }
+
+    .fr-text {
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-meta);
+        overflow-wrap: anywhere;
+    }
+
+    .fr-text code {
+        font-size: var(--lorea-text-desc);
+        unicode-bidi: isolate;
+    }
+
+    .fr-layout {
+        display: grid;
+        gap: 0;
+    }
+
+    @media (min-width: 64rem) {
+
+        /* Beside the three nodes, so the end of the row is not left empty. */
+        .fr-layout {
+            grid-template-columns: minmax(0, 1fr) 14.5rem;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .fr-layout .fr-links {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-block: 0;
+            padding-block: 0.2rem;
+            padding-inline-start: 1.25rem;
+            border-block-start: 0;
+            border-inline-start: 1px solid var(--lorea-rule);
+        }
+    }
+
+    .fr-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.6rem 2rem;
+        margin-block-start: 1.1rem;
+        padding-block-start: 0.85rem;
+        border-block-start: 1px solid var(--lorea-rule);
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-desc);
+    }
+
+    .fr-link-label {
+        margin-inline-end: 0.4rem;
+        color: var(--lorea-muted);
+    }
+
+    .fr-used {
+        color: var(--lorea-heading);
+    }
+
+    .fr-next {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.15rem 0.75rem;
+        border: 1px dashed var(--lorea-rule-dark);
+        border-radius: 999px;
+        color: var(--lorea-link);
+        text-decoration: none;
+    }
+
+    .fr-next::after {
+        content: "\2192";
+        font-family: var(--lorea-font-en);
+    }
+
+    .lorea[lang="fa"] .fr-next::after {
+        content: "\2190";
+    }
+
+    .fr-next:hover {
+        border-style: solid;
+        border-color: var(--lorea-link);
+    }
+
+    .fr-next:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: 2px;
+    }
+
+    @media (max-width: 47.99rem) {
+        .flow-rail {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1.4rem;
+        }
+
+        .fr-node {
+            grid-template-columns: 2.5rem minmax(0, 1fr);
+            column-gap: 0.85rem;
+            row-gap: 0.1rem;
+            padding-inline-end: 0;
+        }
+
+        .fr-dot {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+
+        .fr-label {
+            grid-column: 2;
+            grid-row: 1;
+            align-self: end;
+        }
+
+        .fr-text {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .fr-node:not(:last-child)::after {
+            inset-block: 2.9rem calc(-1.4rem + 0.45rem);
+            inset-inline: calc(1.25rem - 1px) auto;
+            inline-size: 2px;
+            block-size: auto;
+            background: repeating-linear-gradient(to bottom, var(--nl) 0 6px, transparent 6px 12px);
+            background-size: 2px 12px;
+        }
+
+        .fr-node:not(:last-child)::before {
+            inset-block: auto calc(-1.4rem + 0.45rem);
+            inset-inline: calc(1.25rem - 0.25rem) auto;
+            transform: rotate(135deg);
+        }
+
+        .lorea[lang="fa"] .fr-node:not(:last-child)::before {
+            transform: rotate(225deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .fr-node:not(:last-child)::after {
+            animation: fr-flow 1.2s linear infinite;
+        }
+
+        .fr-node.is-here .fr-dot {
+            animation: fr-pulse 2.4s ease-in-out infinite;
+        }
+
+        @media (max-width: 47.99rem) {
+            .fr-node:not(:last-child)::after {
+                animation-name: fr-flow-down;
+            }
+        }
+    }
+
+    @keyframes fr-flow {
+        to {
+            background-position-x: calc(var(--fr-dir) * 12px);
+        }
+    }
+
+    @keyframes fr-flow-down {
+        to {
+            background-position-y: 12px;
+        }
+    }
+
+    @keyframes fr-pulse {
+        50% {
+            box-shadow: 0 0 0 7px transparent;
+        }
+    }
+
+    /* --- What the package gives you --------------------------------------- */
+
+    .gives {
+        display: grid;
+        gap: 0.7rem;
+        max-inline-size: 46rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .gives li {
+        position: relative;
+        padding-inline-start: 1.15rem;
+        line-height: var(--lorea-leading-body);
+    }
+
+    .gives li::before {
+        position: absolute;
+        inset-block-start: 0.72em;
+        inset-inline-start: 0;
+        inline-size: 0.38rem;
+        block-size: 0.38rem;
+        background: var(--lorea-accent);
+        content: "";
+    }
+
+    /* --- Install command -------------------------------------------------- */
+
+    .install-card {
+        padding: 0.9rem 1rem 0.6rem;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0.6rem;
+        background: var(--lorea-chrome);
+    }
+
+    .install-tabs {
+        display: flex;
+        gap: 0.25rem;
+        margin: -0.9rem -1rem 0.8rem;
+        border-block-end: 1px solid var(--lorea-rule);
+    }
+
+    .install-tab {
+        padding: 0.55rem 0.9rem;
+        border: 0;
+        border-block-end: 2px solid transparent;
+        background: transparent;
+        color: var(--lorea-muted);
+        font: inherit;
+        font-size: var(--lorea-text-desc);
+        cursor: pointer;
+    }
+
+    .install-tab:hover {
+        color: var(--lorea-heading);
+    }
+
+    .install-tab[aria-selected="true"] {
+        border-block-end-color: var(--lorea-accent);
+        color: var(--lorea-heading);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .install-tab:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: -2px;
+    }
+
+    .command.is-soon code {
+        color: var(--lorea-muted);
+    }
+
+    .copy-soon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2.2rem;
+        block-size: 2.2rem;
+        color: var(--lorea-muted);
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .install-tab small {
+        margin-inline-start: 0.35rem;
+        padding: 0 0.4rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 999px;
+        font-size: var(--lorea-text-meta);
+    }
+
+    .install-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        margin-block: 0.7rem 0.3rem;
+    }
+
+    .command {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.15rem;
+        padding-inline-start: 0.85rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 0.4rem;
+        background: var(--lorea-bg);
+    }
+
+    .install-path-title {
+        margin: 1rem 0 0;
+        padding-block-start: 0.85rem;
+        border-block-start: 1px solid var(--lorea-rule);
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-meta);
+        font-weight: var(--lorea-weight-strong);
+        letter-spacing: var(--lorea-tracking-overline);
+        text-transform: uppercase;
+    }
+
+    .lorea[lang="fa"] .install-path-title {
+        letter-spacing: normal;
+    }
+
+    .install-card .dep-path {
+        margin-block-start: 0.35rem;
+    }
+
+    .command code {
+        min-inline-size: 0;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-meta);
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+    }
+
+    /* --- Samples ---------------------------------------------------------- */
+
+    .sample {
+        margin-block-start: 1.4rem;
+    }
+
+    .sample .os-code-fig {
+        margin-block-start: 0.5rem;
+    }
+
+    /* --- Topics: a grid of compact cards ------------------------------------- */
+
+    .topic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 14.5rem), 1fr));
+        gap: 0.75rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .topic-card {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 0.5rem;
+        block-size: 100%;
+        padding: 0.8rem 0.9rem 0.7rem;
+        border: 1px solid var(--lorea-rule);
+        border-radius: 0.6rem;
+        background: var(--lorea-chrome);
+        color: inherit;
+        text-decoration: none;
+        transition: border-color 140ms ease, background-color 140ms ease;
+    }
+
+    .topic-card:hover {
+        border-color: var(--lorea-accent);
+        background: var(--lorea-hover);
+    }
+
+    .topic-card:focus-visible {
+        outline: 2px solid var(--lorea-link);
+        outline-offset: 2px;
+    }
+
+    .topic-top {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .topic-icon {
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2rem;
+        block-size: 2rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 0.5rem;
+        background: var(--lorea-bg);
+        color: var(--lorea-accent);
+    }
+
+    .topic-title {
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-title);
+        font-weight: var(--lorea-weight-strong);
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .topic-summary {
+        display: -webkit-box;
+        overflow: hidden;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-desc);
+        line-height: var(--lorea-leading-meta);
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+
+    .topic-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-meta);
+    }
+
+    .topic-ns {
+        padding: 0 0.55rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-radius: 999px;
+        font-family: var(--lorea-code-font);
+        font-size: var(--lorea-text-meta);
+        unicode-bidi: isolate;
+    }
+
+    .topic-arrow {
+        color: var(--lorea-muted);
+        font-family: var(--lorea-font-en);
+        font-size: var(--lorea-text-title);
+        transition: color 140ms ease;
+    }
+
+    .topic-arrow::after {
+        content: "\2192";
+    }
+
+    .lorea[lang="fa"] .topic-arrow::after {
+        content: "\2190";
+    }
+
+    .topic-card:hover .topic-arrow {
+        color: var(--lorea-accent);
+    }
+}

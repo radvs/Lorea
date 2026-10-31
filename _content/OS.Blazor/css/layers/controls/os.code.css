@@ -1,0 +1,105 @@
+@layer os.ctrls {
+    .os-code {
+        container-type: inline-size;
+    }
+
+    .os-code-fig {
+        margin: 0;
+    }
+
+    .os-code-box {
+        border: 1px solid var(--os-code-border, color-mix(in srgb, CanvasText 15%, transparent));
+        background: var(--os-code-bg, var(--os-fill));
+    }
+
+    .os-code-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.2rem 0.3rem 0.2rem 1rem;
+        border-block-end: 1px solid var(--os-code-border, color-mix(in srgb, CanvasText 15%, transparent));
+    }
+
+    .os-code-lang,
+    .os-code-output-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        opacity: var(--os-muted);
+    }
+
+    .os-code-box pre {
+        overflow-x: auto;
+        margin: 0;
+        padding: 1rem;
+        font-size: var(--os-code-size, 0.85rem);
+        line-height: 1.75;
+        tab-size: 4;
+    }
+
+    .os-code-box pre :is(span, code) {
+        font-family: var(--os-code-font);
+    }
+
+    .os-tk-keyword {
+        color: var(--os-tk-keyword);
+    }
+
+    .os-tk-string {
+        color: var(--os-tk-string);
+    }
+
+    .os-tk-comment {
+        color: var(--os-tk-comment);
+    }
+
+    .os-tk-number {
+        color: var(--os-tk-number);
+    }
+
+    .os-tk-method {
+        color: var(--os-tk-method);
+    }
+
+    .os-tk-type {
+        color: var(--os-tk-type);
+    }
+
+    .os-code-output {
+        display: grid;
+        gap: 0.3rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--os-code-border, color-mix(in srgb, CanvasText 15%, transparent));
+        border-block-start: 0;
+        border-inline-start: 2px solid var(--os-code-accent, AccentColor);
+
+        & samp {
+            font-family: inherit;
+            font-size: 0.75rem;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    .os-inline-code {
+        padding: 0.05rem 0.3rem;
+        background: var(--os-code-bg, var(--os-fill));
+        font-family: var(--os-code-font);
+        font-size: 0.88em;
+    }
+
+    @container (min-width: 44rem) {
+        .os-code-fig[data-output="true"] {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(11rem, 16rem);
+        }
+
+        .os-code-fig[data-output="true"] .os-code-output {
+            align-content: start;
+            border-block-start: 1px solid var(--os-code-border, color-mix(in srgb, CanvasText 15%, transparent));
+            border-inline-start: 0;
+            border-block-end: 1px solid var(--os-code-border, color-mix(in srgb, CanvasText 15%, transparent));
+            box-shadow: inset 0 2px 0 var(--os-code-accent, AccentColor);
+        }
+    }
+}

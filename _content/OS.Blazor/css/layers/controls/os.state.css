@@ -1,0 +1,63 @@
+@layer os.ctrls {
+    .os-state-wait {
+        display: flex;
+        flex-direction: var(--os-state-wait-dir, row);
+        align-items: center;
+        justify-content: center;
+        gap: var(--os-gap);
+        min-block-size: var(--os-state-wait, 6rem);
+        opacity: var(--os-muted);
+    }
+
+    .os-state {
+        min-width: 0;
+
+        &[data-tall="true"] {
+            min-height: var(--os-state-tall, 14rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .os-state-rows {
+        display: flex;
+        padding: var(--os-state-rows-pad, 0);
+        flex-direction: column;
+        gap: var(--os-state-gap, 0.5rem);
+    }
+
+    .os-state-row {
+        height: var(--os-state-row, 1rem);
+        border-radius: var(--os-radius);
+        background: var(--os-state-fill, var(--os-fill));
+        animation: os-pulse 1.4s ease-in-out infinite;
+    }
+
+    .os-state-msg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--os-gap);
+        padding: var(--os-state-pad, 2rem 1rem);
+        text-align: center;
+        opacity: var(--os-muted);
+
+        & > span {
+            max-inline-size: var(--os-state-measure, 60ch);
+        }
+    }
+
+    @keyframes os-pulse {
+        50% {
+            opacity: 0.45;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .os-state-row {
+            animation: none;
+        }
+    }
+}

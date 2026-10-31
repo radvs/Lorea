@@ -1,0 +1,114 @@
+@layer lorea.parts {
+    .lorea {
+        --lorea-head-h: 3.5rem;
+        --lorea-rail-w: 13.75rem;
+        --lorea-gutter: clamp(1.5rem, 3vw, 2.75rem);
+        --lorea-pad: clamp(1rem, 3vw, 1.5rem);
+        display: flex;
+        flex-direction: column;
+        min-block-size: 100vh;
+    }
+
+    /* --- Not found -------------------------------------------------------- */
+
+    .not-found-page {
+        max-inline-size: 54rem;
+        min-block-size: min(52vh, 30rem);
+        margin-inline: auto;
+        padding-block: clamp(2.5rem, 8vw, 5rem) clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .not-found-page h1 {
+        max-inline-size: 18ch;
+        margin: 0;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-hero);
+        letter-spacing: var(--lorea-tracking);
+        line-height: var(--lorea-leading-heading);
+        text-wrap: balance;
+    }
+
+    .not-found-code {
+        margin: 0.75rem 0 0;
+        color: var(--lorea-muted);
+        font-family: var(--lorea-code-font);
+        font-size: var(--lorea-text-desc);
+        letter-spacing: var(--lorea-tracking-overline);
+    }
+
+    .not-found-page>p:not(.not-found-code) {
+        max-inline-size: 44ch;
+        margin-block: 1rem 1.5rem;
+        color: var(--lorea-muted);
+        line-height: var(--lorea-leading-body);
+    }
+
+    .not-found-page h2 {
+        margin-block: clamp(2rem, 4vw, 3rem) 0.75rem;
+        padding-block-start: 1.5rem;
+        border-block-start: 1px solid var(--lorea-rule);
+        color: var(--lorea-muted);
+        font-size: var(--lorea-text-meta);
+        font-weight: var(--lorea-weight-strong);
+        letter-spacing: var(--lorea-tracking-overline);
+        text-transform: uppercase;
+    }
+
+    .return-link {
+        display: inline-flex;
+        align-items: center;
+        min-block-size: 2.5rem;
+        color: var(--lorea-link);
+        font-size: var(--lorea-text-body);
+        font-weight: var(--lorea-weight-strong);
+        text-decoration: none;
+    }
+
+    .return-link:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    /* --- Persian type ----------------------------------------------------- */
+
+    .lorea[lang="fa"] :is(.home-title,
+        .page-head .os-head-title,
+        .doc-h2,
+        .not-found-page h1) {
+        letter-spacing: normal;
+        line-height: var(--lorea-leading-meta);
+    }
+
+    .lorea[lang="fa"] :is(.index-group-title,
+        .page-index-label,
+        .page-head .os-head-label,
+        .not-found-page h2) {
+        letter-spacing: normal;
+    }
+
+    /* --- Phones ----------------------------------------------------------- */
+
+    @media (max-width: 47.99rem) {
+        .brand-note {
+            display: none;
+        }
+
+        .site-brand {
+            min-block-size: 2.5rem;
+        }
+
+        .site-foot-home {
+            min-block-size: 2.5rem;
+        }
+
+        .language-option {
+            min-block-size: 2.5rem;
+        }
+
+        .page-head .os-head-value a {
+            display: inline-flex;
+            align-items: center;
+            min-block-size: 2.5rem;
+        }
+    }
+}

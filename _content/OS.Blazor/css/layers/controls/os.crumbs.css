@@ -1,0 +1,54 @@
+@layer os.ctrls {
+    .os-crumbs {
+        margin-block-end: var(--os-crumbs-gap, 1rem);
+        font-size: var(--os-crumbs-size, 0.75rem);
+    }
+
+    .os-crumbs ol {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.3rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .os-crumbs li {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        min-inline-size: 0;
+        color: var(--os-crumbs-muted, color-mix(in srgb, currentColor 65%, transparent));
+    }
+
+    .os-crumbs li+li::before {
+        color: var(--os-crumbs-sep, var(--os-line));
+        content: "/";
+    }
+
+    .os-crumbs a {
+        color: inherit;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .os-crumbs a:hover {
+        color: var(--os-crumbs-hover, var(--os-info));
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    .os-crumbs [aria-current="page"] {
+        color: var(--os-crumbs-current, inherit);
+        font-weight: 700;
+    }
+
+    @media (max-width: 47.99rem) {
+        .os-crumbs a {
+            display: inline-flex;
+            align-items: center;
+            min-block-size: 2.5rem;
+        }
+    }
+}

@@ -1,0 +1,103 @@
+@layer os.ctrls {
+    .os-field {
+        display: flex;
+        flex-direction: column;
+        gap: var(--os-field-gap, 0.25rem);
+        min-width: 0;
+    }
+
+    .os-label {
+        font-size: var(--os-label-size, 0.75rem);
+        font-weight: 600;
+    }
+
+    .os-label-star {
+        margin-inline-start: 0.125rem;
+        color: var(--os-label-star, currentColor);
+    }
+
+    .os-field-box {
+        display: flex;
+        align-items: center;
+        gap: var(--os-gap);
+        padding: var(--os-field-pad, 0.4375rem 0.625rem);
+        border: 1px solid var(--os-field-border, var(--os-border));
+        border-radius: var(--os-field-radius, var(--os-radius));
+        background: var(--os-field-bg, var(--os-bg));
+        min-width: 0;
+
+        &:focus-within {
+            border-color: var(--os-field-focus, currentColor);
+        }
+    }
+
+    .os-field-icon {
+        opacity: var(--os-muted);
+    }
+
+    .os-field-input {
+        flex: 1;
+        min-width: 0;
+        border: 0;
+        background: none;
+        color: inherit;
+        font: inherit;
+        outline: none;
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+
+        &:autofill,
+        &:-webkit-autofill {
+            -webkit-text-fill-color: currentColor;
+            -webkit-background-clip: text;
+            caret-color: currentColor;
+            transition: background-color 0s 8000000s;
+        }
+
+        &[readonly] {
+            cursor: default;
+        }
+    }
+
+    .os-field-box:has(> .os-field-input[readonly]) {
+        border-style: dashed;
+        background: var(--os-field-readonly-bg, var(--os-fill));
+    }
+
+    .os-sr-only {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .os-field[data-invalid="true"] .os-field-box {
+        border-color: var(--os-field-invalid, currentColor);
+    }
+
+    .os-field-hint,
+    .os-field-hint {
+        font-size: var(--os-field-note-size, 0.6875rem);
+        opacity: var(--os-muted);
+    }
+
+    .os-field-error {
+        display: flex;
+        align-items: start;
+        gap: 0.25rem;
+        font-size: var(--os-field-note-size, 0.6875rem);
+        color: var(--os-field-invalid, inherit);
+
+        & .os-field-note-icon {
+            flex: none;
+            margin-block-start: 0.0625rem;
+        }
+    }
+}

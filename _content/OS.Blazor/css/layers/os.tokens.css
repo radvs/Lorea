@@ -1,0 +1,41 @@
+@property --os-inset-bottom {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 0px;
+}
+
+@layer os.tokens {
+    :root {
+        --os-radius: 6px;
+        --os-radius-lg: 10px;
+        --os-gap: 0.5rem;
+        --os-pad: 1rem;
+        --os-fg: inherit;
+        --os-bg: transparent;
+        --os-border: transparent;
+        --os-muted: 0.7;
+        --os-fill: color-mix(in srgb, CanvasText 12%, Canvas);
+        --os-surface: Canvas;
+        --os-line: color-mix(in srgb, CanvasText 22%, Canvas);
+        --os-good: light-dark(#0f7b0f, #6ccb5f);
+        --os-warn: light-dark(#9d5d00, #fce100);
+        --os-bad: light-dark(#c42b1c, #ff99a4);
+        --os-info: light-dark(#005fb8, #60cdff);
+        --os-invert-bg: CanvasText;
+        --os-invert-fg: Canvas;
+        --os-font: ui-sans-serif, system-ui, sans-serif;
+        --os-code-font: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+        --os-tk-keyword: light-dark(#0000ff, #569cd6);
+        --os-tk-string: light-dark(#a31515, #ce9178);
+        --os-tk-comment: light-dark(#008000, #6a9955);
+        --os-tk-number: light-dark(#098658, #b5cea8);
+        --os-tk-method: light-dark(#795e26, #dcdcaa);
+        --os-tk-type: light-dark(#267f99, #4ec9b0);
+        --os-speed: 120ms;
+        --os-state-hover: 8%;
+        --os-state-focus: 10%;
+        --os-state-press: 10%;
+        --os-state-drag: 16%;
+        --os-state-off: 0.38;
+    }
+}

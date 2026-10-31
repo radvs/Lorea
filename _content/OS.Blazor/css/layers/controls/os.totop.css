@@ -1,0 +1,46 @@
+@layer os.ctrls {
+    .os-totop {
+        position: fixed;
+        inset-block-end: calc(var(--os-totop-lift, 0rem) + var(--os-totop-inset, 1.25rem));
+        inset-inline-end: var(--os-totop-inset, 1.25rem);
+        z-index: var(--os-totop-z, 25);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: var(--os-totop-size, 2.5rem);
+        block-size: var(--os-totop-size, 2.5rem);
+        padding: 0;
+        border: 1px solid var(--os-totop-border, color-mix(in oklch, currentColor 55%, transparent));
+        border-radius: var(--os-totop-radius, 999px);
+        background: var(--os-totop-bg, var(--os-fill));
+        color: var(--os-totop-fg, var(--os-fg));
+        line-height: 0;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        translate: 0 var(--os-totop-rise, 0.5rem);
+        transition: opacity var(--os-speed) ease, translate var(--os-speed) ease, visibility 0s linear var(--os-speed);
+
+        &[data-on="true"] {
+            opacity: 1;
+            visibility: visible;
+            translate: 0 0;
+            transition-delay: 0s;
+        }
+
+        &:hover {
+            background: var(--os-totop-hover, color-mix(in oklch, currentColor var(--os-state-hover), var(--os-totop-bg, var(--os-fill))));
+        }
+
+        &:active {
+            translate: 0 1px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .os-totop {
+            transition: none;
+            translate: none;
+        }
+    }
+}
