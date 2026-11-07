@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <base href="/Lorea/" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Lorea | OriginStack Documentation</title>
+
+    <meta name="description"
+        content="Lorea — OriginStack framework documentation, guides, architecture references, and developer resources." />
+
+    <meta name="theme-color" content="#F8F8F8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Lorea" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <meta name="application-name" content="Lorea" />
+    <meta name="author" content="OriginStack" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lorea" />
+    <meta property="og:title" content="Lorea | OriginStack Documentation" />
+    <meta property="og:description" content="Documentation and developer resources for the OriginStack framework." />
+    <meta property="og:url" content="https://radvs.github.io/Lorea/" />
+    <meta property="og:image" content="https://radvs.github.io/Lorea/imgs/brand/lorea-icon-512.png" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Lorea | OriginStack Documentation" />
+    <meta name="twitter:description" content="Documentation and developer resources for the OriginStack framework." />
+
+    <script src="_content/OS.Web/js/os-boot.js?v=4cebab9c73bc" data-key="lorea.theme" data-dark="dark" data-light="light"></script>
+    <script src="js/lorea-culture.js?v=4cebab9c73bc"></script>
+    <link rel="icon" type="image/svg+xml" href="imgs/brand/lorea-favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="imgs/brand/lorea-icon-96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="imgs/brand/lorea-icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="imgs/brand/lorea-icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="imgs/brand/lorea-apple-icon.png" />
+    <link rel="shortcut icon" href="imgs/brand/lorea-icon.ico" />
+    <link rel="manifest" href="pwa/manifest.json" />
+
+    <link rel="stylesheet" href="css/lorea.css?v=4cebab9c73bc" />
+
+    <link href="_framework/dotnet.0wyoxfycnf.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-YLzi1xHvIrWJ+bcHudyG84valK5O+K8xMiCpO/v+hSg=" />
+    <script type="importmap">{
+  "imports": {
+    "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.w3qd1tpl0e.js",
+    "./_framework/dotnet.js": "./_framework/dotnet.0wyoxfycnf.js",
+    "./_framework/dotnet.native.js": "./_framework/dotnet.native.s3uongt91d.js",
+    "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.5nc8i5dl74.js"
+  },
+  "scopes": {},
+  "integrity": {
+    "./_framework/blazor.webassembly.js": "sha256-lDXsDYFgm62F+YUvxES7IOTCXYpiHpU3uR45YdC6mq4=",
+    "./_framework/blazor.webassembly.w3qd1tpl0e.js": "sha256-lDXsDYFgm62F+YUvxES7IOTCXYpiHpU3uR45YdC6mq4=",
+    "./_framework/dotnet.0wyoxfycnf.js": "sha256-YLzi1xHvIrWJ+bcHudyG84valK5O+K8xMiCpO/v+hSg=",
+    "./_framework/dotnet.js": "sha256-YLzi1xHvIrWJ+bcHudyG84valK5O+K8xMiCpO/v+hSg=",
+    "./_framework/dotnet.native.js": "sha256-aHUDsqAeEb992/NgoToIhFB4El4Wy2xAe4/GfkawJa8=",
+    "./_framework/dotnet.native.s3uongt91d.js": "sha256-aHUDsqAeEb992/NgoToIhFB4El4Wy2xAe4/GfkawJa8=",
+    "./_framework/dotnet.runtime.5nc8i5dl74.js": "sha256-/3dBg9sj1yLD3h0PDMHnNUXWs/2zWwIMEzom1Xz3Q40=",
+    "./_framework/dotnet.runtime.js": "sha256-/3dBg9sj1yLD3h0PDMHnNUXWs/2zWwIMEzom1Xz3Q40="
+  }
+}</script>
+</head>
+
+<body>
+    <noscript>
+        <p class="no-script">Lorea needs JavaScript to run. · برای اجرای لورا جاوااسکریپت لازم است.</p>
+    </noscript>
+
+    <div id="app">
+        <div class="loading" role="status" aria-live="polite" data-state="loading">
+            <img class="loading-mark" src="imgs/brand/lorea-favicon.svg" alt="" width="72" height="72" />
+            <div class="loading-bar"><span></span></div>
+            <h1 class="loading-title">
+                <span lang="en" data-for="failed">Lorea could not start</span>
+                <span lang="fa" data-for="failed">لورا باز نشد</span>
+                <span lang="en" data-for="offline">You are offline</span>
+                <span lang="fa" data-for="offline">اتصال برقرار نیست</span>
+            </h1>
+            <p class="loading-text">
+                <span lang="en" data-for="loading">Getting Lorea ready…</span>
+                <span lang="fa" data-for="loading">در حال آماده‌سازی لورا…</span>
+                <span lang="en" data-for="slow">This is taking longer than usual. Check your connection; Lorea is still trying.</span>
+                <span lang="fa" data-for="slow">بارگذاری کمی طول کشید. اتصال اینترنت را بررسی کنید؛ لورا همچنان تلاش می‌کند.</span>
+                <span lang="en" data-for="failed">The site is unavailable or did not finish loading. Try again in a moment.</span>
+                <span lang="fa" data-for="failed">سایت در دسترس نیست یا بارگذاری ناقص ماند. چند لحظهٔ دیگر دوباره تلاش کنید.</span>
+                <span lang="en" data-for="offline">Lorea reloads by itself as soon as you are back online.</span>
+                <span lang="fa" data-for="offline">به محض وصل شدن اینترنت، لورا خودکار دوباره بارگذاری می‌شود.</span>
+            </p>
+            <a href="." class="loading-retry">
+                <span lang="en">Try again</span>
+                <span lang="fa">تلاش دوباره</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui" role="alert">
+        <div class="error-body">
+            <p class="error-text">
+                <span lang="en">Something went wrong. Reload the page to continue.</span>
+                <span lang="fa">مشکلی پیش آمد. برای ادامه صفحه را دوباره بارگذاری کنید.</span>
+            </p>
+            <a href="." class="reload">
+                <span lang="en">Reload</span>
+                <span lang="fa">بارگذاری دوباره</span>
+            </a>
+            <button type="button" class="dismiss">
+                <span aria-hidden="true">×</span>
+                <span lang="en" class="visually-hidden">Dismiss</span>
+                <span lang="fa" class="visually-hidden">بستن</span>
+            </button>
+        </div>
+    </div>
+    <script src="js/lorea-boot.js"></script>
+    <script src="_framework/blazor.webassembly.w3qd1tpl0e.js"></script>
+</body>
+
+</html>

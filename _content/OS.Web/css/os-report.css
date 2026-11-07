@@ -1,0 +1,17 @@
+/* Origin Spring report components: charts, ranks and stat tiles.
+   The layer order is declared here so a caller can place their own rules around ours.
+   Each part lives in its own file under layers/charts; this file only pulls them in. */
+
+@layer os.tokens, os.base, os.ctrls, os.util;
+
+@import url("./layers/charts/os.plot.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.bar.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.donut.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.tip.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.legend.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.trend.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.series.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.pareto.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.rank.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.stat.css?v=4cebab9c73bc");
+@import url("./layers/charts/os.motion.css?v=4cebab9c73bc");

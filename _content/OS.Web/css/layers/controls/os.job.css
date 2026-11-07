@@ -1,0 +1,88 @@
+@layer os.ctrls {
+    .os-job {
+        display: grid;
+        gap: var(--os-gap);
+    }
+
+    .os-job-run {
+        display: grid;
+        gap: 0.75rem;
+    }
+
+    .os-job-top {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--os-gap);
+        font-size: 0.875rem;
+
+        & b {
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    .os-job-track {
+        block-size: 0.5rem;
+        border-radius: 999px;
+        background: var(--os-job-track, color-mix(in srgb, currentColor 12%, transparent));
+        overflow: hidden;
+
+        & > i {
+            display: block;
+            block-size: 100%;
+            inline-size: var(--os-job-p, 0%);
+            border-radius: inherit;
+            background: var(--os-job-bar, var(--os-invert-bg));
+            transition: inline-size var(--os-speed, 200ms) ease-out;
+        }
+    }
+
+    .os-job-facts {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--os-gap);
+        margin: 0;
+
+        & dt {
+            font-size: 0.75rem;
+            opacity: var(--os-muted);
+        }
+
+        & dd {
+            margin: 0;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    .os-job-phases {
+        display: grid;
+        gap: 0.25rem;
+        margin: 0;
+        padding-inline-start: 1.1rem;
+        font-size: 0.8125rem;
+
+        & [data-state="wait"] {
+            opacity: var(--os-muted);
+        }
+
+        & [data-state="done"] {
+            color: var(--os-chip-good-fg, inherit);
+        }
+
+        & [data-state="now"] {
+            font-weight: 600;
+        }
+    }
+
+    .os-job-hint {
+        margin: 0;
+        font-size: 0.75rem;
+        opacity: var(--os-muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .os-job-track > i {
+            transition: none;
+        }
+    }
+}

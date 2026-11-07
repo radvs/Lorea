@@ -1,0 +1,112 @@
+/* A ranked list with a bar behind each row and a share of the total. */
+
+@layer os.ctrls {
+.os-ranks {
+    display: grid;
+    gap: var(--os-rank-gap, 0.1875rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.os-rank {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--os-rank-pad, 0.4375rem 0.625rem);
+    border-radius: var(--os-radius);
+    overflow: hidden;
+}
+
+.os-rank-fill {
+    position: absolute;
+    z-index: -1;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--os-share, 0);
+    border-radius: var(--os-radius);
+    background: var(--os-rank-fill, color-mix(in oklch, currentColor 20%, transparent));
+}
+
+.os-rank-no {
+    flex: none;
+    inline-size: var(--os-rank-no, 1.25rem);
+    text-align: center;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    opacity: var(--os-muted);
+}
+
+.os-rank-text {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4375rem;
+    flex: 1 1 auto;
+    min-inline-size: 0;
+}
+
+.os-rank-note {
+    flex: none;
+    padding-inline: 0.3125rem;
+    border-radius: 3px;
+    background: var(--os-fill);
+    font-size: 0.6875rem;
+    direction: ltr;
+    unicode-bidi: isolate;
+    white-space: nowrap;
+    opacity: var(--os-muted);
+}
+
+.os-rank-num {
+    display: grid;
+    justify-items: end;
+    flex: none;
+    line-height: 1.25;
+    font-variant-numeric: tabular-nums;
+}
+
+.os-rank-share {
+    font-size: 0.6875rem;
+    opacity: var(--os-muted);
+}
+
+.os-rank-hit {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    inline-size: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.os-rank[data-on="true"] {
+    outline: 1px solid var(--os-rank-on, currentColor);
+    outline-offset: -1px;
+}
+
+.os-rank-mark {
+    flex: none;
+    display: grid;
+    place-items: center;
+    color: var(--os-chart-mark, currentColor);
+}
+
+.os-rank-dot {
+    flex: none;
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: 2px;
+    background: var(--os-chart-mark, currentColor);
+}
+
+.os-rank-name {
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+}

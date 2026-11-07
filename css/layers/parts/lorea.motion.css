@@ -1,0 +1,26 @@
+@layer lorea.parts {
+    /* Only two motions earn their place: the flow of an indirect dependency on the map, and the loading mark. */
+    @keyframes lorea-flow {
+        to {
+            stroke-dashoffset: -10;
+        }
+    }
+
+    @keyframes lorea-pulse {
+        50% {
+            opacity: 0.55;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-delay: 0ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}

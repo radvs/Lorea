@@ -1,0 +1,106 @@
+@layer os.ctrls {
+    .os-file-pick {
+        position: relative;
+        overflow: hidden;
+        border-color: var(--os-btn-border, var(--os-border));
+
+        &[aria-busy="true"] {
+            cursor: progress;
+        }
+    }
+
+    .os-file-pick-input {
+        position: absolute;
+        inset: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        opacity: 0;
+        cursor: pointer;
+        font-size: 0;
+    }
+
+    .os-image-field {
+        gap: var(--os-image-gap, 0.5rem);
+
+        & > .os-field-hint,
+        & > .os-field-error {
+            align-self: center;
+        }
+    }
+
+    .os-image {
+        position: relative;
+        align-self: center;
+        inline-size: var(--os-image-size, 8rem);
+        max-inline-size: 100%;
+        aspect-ratio: 1;
+        border-radius: var(--os-image-radius, var(--os-radius-lg));
+        overflow: hidden;
+
+        &[data-empty="true"] {
+            border: 1px dashed var(--os-image-empty-border, color-mix(in srgb, currentColor 45%, transparent));
+        }
+
+        &[data-round="true"] {
+            border-radius: 999px;
+        }
+    }
+
+    .os-image-pic {
+        display: block;
+        inline-size: 100%;
+        block-size: 100%;
+        max-inline-size: none;
+        object-fit: contain;
+
+        [data-round="true"] > & {
+            object-fit: cover;
+        }
+    }
+
+    .os-image-veil {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--os-gap);
+        background: var(--os-image-veil, color-mix(in srgb, Canvas 60%, transparent));
+        opacity: 0;
+        transition: opacity var(--os-speed) linear;
+    }
+
+    .os-image:is(:hover, :focus-within, [aria-busy="true"], [data-empty="true"], [data-hold="true"]) .os-image-veil {
+        opacity: 1;
+    }
+
+    .os-image[data-empty="true"] .os-image-veil {
+        background: none;
+    }
+
+    .os-image-act {
+        --os-icon-btn-size: var(--os-image-act-size, 2.25rem);
+        border-radius: 999px;
+        background: var(--os-image-act-bg, var(--os-fill));
+        color: var(--os-image-act-fg, inherit);
+        box-shadow: 0 1px 3px color-mix(in srgb, black 25%, transparent);
+    }
+
+    .os-image-yes:not(:disabled) {
+        background: var(--os-image-danger, var(--os-btn-danger-fg, CanvasText));
+        color: var(--os-image-danger-fg, Canvas);
+    }
+
+    .os-image-drop:is(:hover, :focus-visible) {
+        color: var(--os-image-danger, var(--os-btn-danger-fg, inherit));
+    }
+
+    @media (hover: none) {
+        .os-image-veil {
+            align-items: end;
+            padding-block-end: var(--os-gap);
+            background: none;
+            opacity: 1;
+        }
+    }
+}
