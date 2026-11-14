@@ -1,0 +1,12 @@
+@layer os.util {
+    .os-nowrap {
+        white-space: nowrap;
+    }
+
+    .os-bidi {
+        unicode-bidi: plaintext;
+        text-align: start;
+        inline-size: fit-content;
+        max-inline-size: 100%;
+    }
+}

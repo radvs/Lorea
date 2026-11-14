@@ -1,0 +1,23 @@
+@layer os.tokens, os.base, lorea.tokens, lorea.reset, os.ctrls, os.util, lorea.base, lorea.parts;
+
+@import url("../_content/OS.Web/css/os-web.css?v=25c37a4a59f4");
+@import url("./layers/lorea.tokens.css?v=25c37a4a59f4");
+@import url("./layers/lorea.typography.css?v=25c37a4a59f4");
+@import url("./layers/lorea.base.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.header.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.footer.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.doc.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.index.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.layout.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.goals.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.sidebar.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.home.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.map.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.flow.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.package.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.topic.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.code.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.path.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.loading.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.pages.css?v=25c37a4a59f4");
+@import url("./layers/parts/lorea.motion.css?v=25c37a4a59f4");

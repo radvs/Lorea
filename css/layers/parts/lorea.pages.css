@@ -1,0 +1,183 @@
+@layer lorea.parts {
+    /* --- Not found: the dot left the line, so the 0 of 404 is an empty orbit --- */
+
+    .site-main:has(.not-found-page) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .site-main:has(.not-found-page) > .page {
+        display: grid;
+        flex: 1;
+        align-content: center;
+        padding-block: 0;
+    }
+
+    .not-found-page {
+        display: grid;
+        justify-items: center;
+        gap: clamp(1rem, 3vw, 2rem);
+        max-inline-size: 44rem;
+        margin-inline: auto;
+        padding-block: clamp(1rem, 4vw, 2rem);
+        text-align: center;
+    }
+
+    .not-found-art {
+        display: block;
+        inline-size: min(100%, 30rem);
+        block-size: auto;
+        color: var(--lorea-heading);
+        direction: ltr;
+    }
+
+    .not-found-four {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 14;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .not-found-dot {
+        fill: var(--lorea-accent);
+    }
+
+    .not-found-copy {
+        display: grid;
+        justify-items: center;
+        gap: 0.9rem;
+    }
+
+    .not-found-page h1 {
+        margin: 0;
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-hero);
+        letter-spacing: var(--lorea-tracking);
+        line-height: var(--lorea-leading-heading);
+        text-wrap: balance;
+    }
+
+    .not-found-text {
+        max-inline-size: 40ch;
+        margin: 0;
+        color: var(--lorea-muted);
+        line-height: var(--lorea-leading-body);
+    }
+
+    .not-found-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-block-start: 0.4rem;
+    }
+
+    .not-found-actions .os-btn {
+        min-block-size: 2.75rem;
+        padding-inline: 1.4rem;
+        border-radius: 999px;
+        font-weight: var(--lorea-weight-strong);
+        transition: border-color 150ms ease-out, background-color 150ms ease-out;
+    }
+
+    .not-found-actions .os-btn[data-kind="ghost"] {
+        border-color: var(--lorea-rule-dark);
+        color: var(--lorea-heading);
+    }
+
+    .not-found-actions .os-btn[data-kind="ghost"]:hover {
+        border-color: var(--lorea-accent);
+        background: var(--lorea-accent-soft);
+    }
+
+    /* --- about and contact --- */
+
+.doc-page {
+    display: grid;
+    gap: 1.25rem;
+    max-inline-size: 44rem;
+    margin-inline: auto;
+    padding-block-end: 3rem;
+}
+
+.doc-title {
+    margin: 0;
+    color: var(--lorea-heading);
+    font-size: var(--lorea-text-hero);
+    line-height: var(--lorea-leading-tight, 1.2);
+}
+
+.doc-deck {
+    margin: 0;
+    color: var(--lorea-muted);
+}
+
+.doc-part {
+    display: grid;
+    gap: 0.5rem;
+    padding-block-start: 1.25rem;
+    border-block-start: 1px solid var(--lorea-rule);
+}
+
+.doc-part h2 {
+    margin: 0;
+    color: var(--lorea-heading);
+    font-size: 1.125rem;
+}
+
+.doc-part h2::before {
+    content: "";
+    display: inline-block;
+    inline-size: 0.6rem;
+    block-size: 0.6rem;
+    margin-inline-end: 0.6rem;
+    border-radius: 50%;
+    background: var(--lorea-accent);
+}
+
+.doc-part p,
+.doc-part ul {
+    margin: 0;
+    color: var(--lorea-muted);
+    line-height: 1.9;
+}
+
+.doc-part ul {
+    padding-inline-start: 1.25rem;
+}
+
+.doc-part code,
+.contact-card code {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-family: var(--lorea-code-font);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+}
+
+.contact-card {
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+    padding: 1.25rem;
+    border: 1px solid var(--lorea-rule);
+    border-radius: 0.75rem;
+    color: var(--lorea-heading);
+    text-decoration: none;
+}
+
+.contact-card:hover,
+.contact-card:focus-visible {
+    border-color: var(--lorea-accent);
+    background: var(--lorea-accent-soft);
+}
+
+.contact-card span {
+    color: var(--lorea-muted);
+}
+}

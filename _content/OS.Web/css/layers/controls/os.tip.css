@@ -1,0 +1,23 @@
+@layer os.ctrls {
+    .os-tip {
+        display: inline-flex;
+    }
+
+    .os-tip-bubble {
+        position: fixed;
+        inset: auto;
+        inline-size: max-content;
+        max-inline-size: min(20rem, calc(100vw - 1rem));
+        margin: 0;
+        padding: 0.25rem 0.5rem;
+        border: 0;
+        border-radius: var(--os-tip-radius, var(--os-radius));
+        background: var(--os-tip-bg, var(--os-invert-bg));
+        color: var(--os-tip-fg, var(--os-invert-fg));
+        font-size: var(--os-tip-size, 0.75rem);
+        line-height: 1.5;
+        text-align: start;
+        overflow: visible;
+        pointer-events: none;
+    }
+}

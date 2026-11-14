@@ -1,0 +1,187 @@
+@layer lorea.parts {
+    #blazor-error-ui {
+        position: fixed;
+        z-index: 1000;
+        inset-inline: 0;
+        inset-block-end: 1rem;
+        display: none;
+        inline-size: min(34rem, calc(100vw - 2rem));
+        margin-inline: auto;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--lorea-rule-dark);
+        border-inline-start: 3px solid var(--lorea-alert);
+        color: var(--lorea-ink);
+        background: var(--lorea-chrome);
+        box-shadow: 0 8px 24px rgb(0 0 0 / 0.22);
+    }
+
+    #blazor-error-ui .error-body {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #blazor-error-ui .error-text {
+        flex: 1;
+        margin: 0;
+    }
+
+    #blazor-error-ui .reload {
+        color: var(--lorea-link);
+        font-weight: var(--lorea-weight-strong);
+        text-decoration: none;
+    }
+
+    #blazor-error-ui .reload:hover {
+        text-decoration: underline;
+    }
+
+    #blazor-error-ui .dismiss {
+        flex: none;
+        inline-size: 2rem;
+        block-size: 2rem;
+        border: 1px solid transparent;
+        color: var(--lorea-muted);
+        background: transparent;
+        font-size: var(--lorea-text-section);
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    #blazor-error-ui .dismiss:hover {
+        background: var(--lorea-hover);
+    }
+
+    #blazor-error-ui [lang] {
+        display: none;
+    }
+
+    html[lang="fa"] #blazor-error-ui [lang="fa"],
+    html:not([lang="fa"]) #blazor-error-ui [lang="en"] {
+        display: inline;
+    }
+
+    #blazor-error-ui .visually-hidden {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .loading {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 1.25rem;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .loading-title,
+    .loading-text {
+        margin: 0;
+        max-inline-size: 24rem;
+    }
+
+    .loading-title {
+        color: var(--lorea-heading);
+        font-size: var(--lorea-text-section);
+        font-weight: var(--lorea-weight-strong);
+    }
+
+    .loading-text {
+        color: var(--lorea-muted);
+        line-height: 1.9;
+    }
+
+    .loading-retry {
+        padding: 0.5rem 1.25rem;
+        color: #fff;
+        background: var(--lorea-accent);
+        text-decoration: none;
+    }
+
+    .loading-retry:hover {
+        background: var(--lorea-accent-hover);
+    }
+
+    .loading [lang],
+    .loading-title,
+    .loading-retry {
+        display: none;
+    }
+
+    .loading[data-state="failed"] .loading-title,
+    .loading[data-state="offline"] .loading-title,
+    .loading[data-state="failed"] .loading-retry,
+    .loading[data-state="offline"] .loading-retry {
+        display: block;
+    }
+
+    .loading[data-state="failed"] .loading-bar,
+    .loading[data-state="offline"] .loading-bar {
+        display: none;
+    }
+
+    .loading[data-state="failed"] .loading-mark,
+    .loading[data-state="offline"] .loading-mark {
+        animation: none;
+        opacity: 0.5;
+        filter: grayscale(1);
+    }
+
+    .loading[data-state="loading"] [data-for="loading"],
+    .loading[data-state="slow"] [data-for="slow"],
+    .loading[data-state="failed"] [data-for="failed"],
+    .loading[data-state="offline"] [data-for="offline"] {
+        display: inline;
+    }
+
+    html[lang="fa"] .loading [lang="en"],
+    html:not([lang="fa"]) .loading [lang="fa"] {
+        display: none !important;
+    }
+
+    html[lang="fa"] .loading-retry [lang="fa"],
+    html:not([lang="fa"]) .loading-retry [lang="en"] {
+        display: inline;
+    }
+
+    .loading-mark {
+        inline-size: 4.5rem;
+        block-size: 4.5rem;
+        animation: lorea-pulse 1.6s ease-in-out infinite;
+    }
+
+    .loading-bar {
+        inline-size: 9rem;
+        block-size: 3px;
+        overflow: hidden;
+        border-radius: 3px;
+        background: var(--lorea-rule);
+    }
+
+    .loading-bar span {
+        display: block;
+        block-size: 100%;
+        inline-size: var(--blazor-load-percentage, 0%);
+        min-inline-size: 6%;
+        background: var(--lorea-accent);
+        transition: inline-size 120ms ease-out;
+    }
+
+    .no-script {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        margin: 0;
+        padding: 1.5rem;
+        text-align: center;
+        color: var(--lorea-ink);
+    }
+}

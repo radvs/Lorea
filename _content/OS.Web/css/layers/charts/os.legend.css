@@ -1,0 +1,52 @@
+/* The key under a chart, listing a colour against its series. */
+
+@layer os.ctrls {
+.os-chart-keys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--os-chart-ink, CanvasText);
+    font-size: var(--os-chart-key, 0.75rem);
+}
+
+.os-chart-key {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.os-chart-key-name {
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.os-chart-key-num {
+    margin-inline-start: auto;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.os-chart-mark {
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    border-radius: 2px;
+    background: var(--os-chart-mark, currentColor);
+}
+
+.os-chart-mark[data-line="true"] {
+    inline-size: 1.125rem;
+    block-size: 0;
+    border-radius: 0;
+    background: none;
+    border-block-start: 2px solid var(--os-chart-mark, currentColor);
+}
+
+.os-chart-mark[data-dash="true"] {
+    border-block-start-style: dashed;
+}
+}

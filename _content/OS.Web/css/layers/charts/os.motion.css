@@ -1,0 +1,55 @@
+/* The entrance animations, and the switch that turns them off for anyone who asked for less movement. */
+
+@layer os.ctrls {
+.os-chart-rise[data-faint="true"] .os-chart-bar {
+    opacity: var(--os-chart-faint, 0.38);
+}
+
+.os-chart-rise {
+    transform-box: fill-box;
+    transform-origin: bottom;
+}
+
+.os-chart[data-anim="on"] .os-chart-rise {
+    animation: os-chart-rise var(--os-chart-ms, 460ms) cubic-bezier(0.2, 0.7, 0.3, 1) both;
+    animation-delay: calc(var(--os-at, 0) * var(--os-chart-step, 26ms));
+}
+
+.os-chart[data-anim="on"] .os-chart-arc {
+    animation: os-chart-sweep var(--os-chart-arc-ms, 900ms) ease-out both;
+    animation-delay: calc(var(--os-at, 0) * var(--os-chart-step, 90ms));
+}
+}
+
+@property --os-arc {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: false;
+}
+
+@keyframes os-chart-rise {
+    from {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes os-chart-sweep {
+    from {
+        --os-arc: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .os-chart[data-anim="on"] .os-chart-rise,
+    .os-chart[data-anim="on"] .os-chart-arc {
+        animation: none;
+    }
+
+    .os-chart-arc {
+        transition: none;
+    }
+
+    .os-chart-bar {
+        transition: none;
+    }
+}

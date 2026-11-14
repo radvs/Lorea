@@ -1,0 +1,52 @@
+/* The floating readout that follows the pointer. */
+
+@layer os.ctrls {
+.os-chart-tip {
+    position: fixed;
+    z-index: var(--os-chart-tip-z, 60);
+    top: var(--os-chart-y, 0);
+    left: var(--os-chart-x, 0);
+    transform: translate(-50%, calc(-100% - 0.75rem));
+    display: grid;
+    gap: 0.125rem;
+    padding: 0.375rem 0.5rem;
+    border-radius: var(--os-tip-radius, var(--os-radius));
+    background: var(--os-tip-bg, var(--os-invert-bg));
+    color: var(--os-tip-fg, var(--os-invert-fg));
+    font-size: var(--os-tip-size, 0.75rem);
+    pointer-events: none;
+    max-inline-size: 16rem;
+}
+
+/* A readout for keyboard focus has no pointer to follow, so it parks in the corner of its chart. */
+.os-chart-tip[data-dock="true"] {
+    position: absolute;
+    top: 0;
+    inset-inline: auto 0;
+    left: auto;
+    transform: none;
+}
+
+:is(.os-chart, .os-series, .os-trend, .os-pareto):has(> .os-chart-tip[data-dock="true"]) {
+    position: relative;
+}
+
+.os-chart-tip[hidden] {
+    display: none;
+}
+
+.os-chart-tip-head {
+    opacity: var(--os-muted);
+}
+
+.os-chart-tip-row {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.os-chart-tip-num {
+    margin-inline-start: auto;
+    font-variant-numeric: tabular-nums;
+}
+}
