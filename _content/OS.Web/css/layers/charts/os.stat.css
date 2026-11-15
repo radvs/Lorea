@@ -1,0 +1,29 @@
+/* A grid of figures that reflows by the width of its container. */
+
+@layer os.ctrls {
+.os-stats {
+    container: os-stats / inline-size;
+}
+
+.os-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 1px;
+    border: 1px solid var(--os-stats-line, var(--os-fill));
+    border-radius: var(--os-stats-radius, var(--os-radius-lg));
+    background: var(--os-stats-line, var(--os-fill));
+    overflow: hidden;
+}
+
+    @container os-stats (min-width: 26rem) {
+        .os-stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @container os-stats (min-width: 45rem) {
+        .os-stats-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

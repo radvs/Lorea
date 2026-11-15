@@ -1,0 +1,84 @@
+@layer os.ctrls {
+    .os-stat {
+        display: flex;
+        flex-direction: column;
+        gap: var(--os-stat-gap, 0.375rem);
+        padding: var(--os-stat-pad, var(--os-pad));
+        min-width: 0;
+    }
+
+    .os-stat-head {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        min-width: 0;
+    }
+
+    .os-stat-icon {
+        opacity: var(--os-muted);
+    }
+
+    .os-stat-label {
+        font-size: var(--os-stat-label-size, 0.75rem);
+        opacity: var(--os-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .os-stat-row {
+        display: flex;
+        align-items: baseline;
+        gap: var(--os-gap);
+        flex-wrap: wrap;
+    }
+
+    .os-stat-value {
+        font-size: var(--os-stat-value-size, 1.25rem);
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+        .os-stat-value[data-tone="up"] {
+            color: var(--os-stat-up, var(--os-chip-good-fg, inherit));
+        }
+
+        .os-stat-value[data-tone="down"] {
+            color: var(--os-stat-down, var(--os-chip-bad-fg, inherit));
+        }
+
+    .os-stat-unit {
+        font-size: var(--os-stat-unit-size, 0.75rem);
+        opacity: var(--os-muted);
+        white-space: nowrap;
+    }
+
+    .os-stat-foot {
+        min-width: 0;
+    }
+
+    .os-stat-delta {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--os-stat-delta-gap, 0.1875rem);
+        margin-inline-end: var(--os-stat-delta-space, 0.3125rem);
+        font-size: var(--os-stat-delta-size, 0.75rem);
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        vertical-align: baseline;
+    }
+
+        .os-stat-delta[data-tone="up"] {
+            color: var(--os-stat-up, var(--os-chip-good-fg, inherit));
+        }
+
+        .os-stat-delta[data-tone="down"] {
+            color: var(--os-stat-down, var(--os-chip-bad-fg, inherit));
+        }
+
+        .os-stat-delta[data-tone="flat"] {
+            opacity: var(--os-muted);
+        }
+}

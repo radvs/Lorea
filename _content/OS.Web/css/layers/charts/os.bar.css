@@ -1,0 +1,97 @@
+/* Bars and columns, grouped or stacked, with the bands that mark a period behind them. */
+
+@layer os.ctrls {
+.os-chart-grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0.375rem 0.5rem;
+    direction: ltr;
+}
+
+.os-chart-grid[data-axis="false"] {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+}
+
+.os-chart-ticks {
+    position: relative;
+    inline-size: var(--os-chart-ticks, 2.75rem);
+    block-size: var(--os-chart-h, 15rem);
+}
+
+.os-chart-tick {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: var(--os-at, 0);
+    transform: translateY(-50%);
+    color: var(--os-chart-ink, CanvasText);
+    font-size: var(--os-chart-text, 0.6875rem);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    opacity: var(--os-muted);
+}
+
+.os-chart-area {
+    position: relative;
+    block-size: var(--os-chart-h, 15rem);
+    border-block-end: 1.5px solid var(--os-chart-axis, var(--os-chart-rule, var(--os-fill)));
+}
+
+.os-chart-plot {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+    direction: ltr;
+}
+
+.os-chart-rule {
+    stroke: var(--os-chart-rule, var(--os-fill));
+    stroke-width: 1;
+}
+
+.os-chart-zone-fill {
+    opacity: var(--os-chart-zone-alpha, 0.14);
+}
+
+.os-chart-zone-name {
+    position: absolute;
+    inset-inline-start: var(--os-at, 50%);
+    inset-block-start: 0.375rem;
+    transform: translateX(-50%);
+    font-weight: 700;
+    font-size: var(--os-chart-text, 0.6875rem);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.os-chart-spacer {
+    inline-size: var(--os-chart-ticks, 2.75rem);
+}
+
+.os-chart-names {
+    position: relative;
+    block-size: var(--os-chart-names, 1.25rem);
+    min-inline-size: 0;
+}
+
+.os-chart-name {
+    position: absolute;
+    inset-inline-start: var(--os-at, 0);
+    transform: translateX(-50%);
+    color: var(--os-chart-ink, CanvasText);
+    font-size: var(--os-chart-text, 0.6875rem);
+    white-space: nowrap;
+    opacity: var(--os-muted);
+}
+
+.os-chart-bar {
+    transition: opacity var(--os-speed) linear;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+}

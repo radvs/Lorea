@@ -1,0 +1,68 @@
+/* The ring: arcs, the middle that a caller fills, and picking one segment. */
+
+@layer os.ctrls {
+.os-chart-ring {
+    inline-size: var(--os-chart-ring, 9rem);
+    max-inline-size: 100%;
+    block-size: auto;
+    direction: ltr;
+    fill: none;
+}
+
+.os-chart-mid-box {
+    position: relative;
+    display: grid;
+    min-inline-size: 0;
+}
+
+.os-chart-mid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    pointer-events: none;
+    padding-inline: var(--os-chart-mid-pad, 19%);
+}
+
+.os-chart-arc {
+    stroke-width: var(--os-chart-arc-size, 6);
+    stroke-dasharray: var(--os-arc) calc(100 - var(--os-arc));
+    transition: opacity var(--os-speed) linear;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+.os-chart-ring[data-pick="true"] .os-chart-arc {
+    cursor: pointer;
+}
+
+.os-chart-ring[data-picked="true"] .os-chart-arc {
+    opacity: var(--os-chart-arc-dim, 0.3);
+
+    &:hover {
+        opacity: var(--os-chart-arc-dim-hover, 0.55);
+    }
+
+    &[data-on="true"] {
+        opacity: 1;
+    }
+}
+
+.os-chart-donut {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+}
+
+.os-chart-donut .os-chart-keys {
+    display: grid;
+    gap: 0.375rem;
+    font-size: var(--os-chart-key, 0.8125rem);
+}
+
+.os-chart-donut .os-chart-key-name {
+    flex: 1;
+}
+}

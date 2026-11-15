@@ -1,0 +1,9 @@
+@layer os.base {
+    [tabindex="-1"]:focus {
+        outline: none;
+    }
+
+    :root {
+        font-family: var(--os-font);
+    }
+}

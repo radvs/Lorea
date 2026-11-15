@@ -1,0 +1,97 @@
+@layer os.ctrls {
+    .os-switch-row {
+        display: flex;
+        align-items: center;
+        gap: var(--os-gap);
+        cursor: pointer;
+    }
+
+    .os-switch-input {
+        appearance: none;
+        flex: none;
+        position: relative;
+        inline-size: var(--os-switch-w, 2.25rem);
+        block-size: var(--os-switch-h, 1.25rem);
+        border-radius: 999px;
+        background: var(--os-switch-off, var(--os-fill));
+        box-shadow: inset 0 0 0 1.5px var(--os-switch-off-ring, color-mix(in oklch, currentColor 60%, transparent));
+        cursor: pointer;
+        transition: background var(--os-switch-ms, 140ms) ease, box-shadow var(--os-switch-ms, 140ms) ease;
+    }
+
+    .os-switch-input::after {
+        content: "";
+        position: absolute;
+        inset-block-start: var(--os-switch-inset, 0.1875rem);
+        inset-inline-start: var(--os-switch-inset, 0.1875rem);
+        inline-size: var(--os-switch-thumb, 0.875rem);
+        block-size: var(--os-switch-thumb, 0.875rem);
+        border-radius: 50%;
+        background: var(--os-switch-off-thumb, color-mix(in oklch, currentColor 70%, transparent));
+        transition: margin-inline-start var(--os-switch-ms, 140ms) ease, background var(--os-switch-ms, 140ms) ease;
+    }
+
+    .os-switch-input:checked {
+        background: var(--os-switch-on, var(--os-invert-bg));
+        box-shadow: none;
+    }
+
+    .os-switch-input:checked::after {
+        margin-inline-start: var(--os-switch-travel, 1rem);
+        background: var(--os-switch-thumb-bg, #fff);
+        mask-image: var(--os-switch-mark, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")), linear-gradient(#000 0 0);
+        mask-position: center;
+        mask-size: 75%, auto;
+        mask-repeat: no-repeat;
+        mask-composite: exclude;
+    }
+
+    .os-switch-input:disabled {
+        opacity: var(--os-muted);
+        cursor: not-allowed;
+    }
+
+    .os-switch-row:has(.os-switch-input:disabled) {
+        cursor: not-allowed;
+    }
+
+    .os-switch-state {
+        opacity: var(--os-muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .os-switch-input,
+        .os-switch-input::after {
+            transition: none;
+        }
+    }
+
+    @media (forced-colors: active) {
+        .os-switch-input {
+            border: 1px solid CanvasText !important;
+        }
+
+        .os-switch-input::after {
+            forced-color-adjust: none;
+            background: CanvasText !important;
+        }
+
+        .os-switch-input:checked {
+            forced-color-adjust: none;
+            border-color: Highlight !important;
+            background: Highlight !important;
+        }
+
+        .os-switch-input:checked::after {
+            background: HighlightText !important;
+        }
+
+        .os-switch-input:disabled {
+            border-color: GrayText !important;
+        }
+
+        .os-switch-input:disabled::after {
+            background: GrayText !important;
+        }
+    }
+}

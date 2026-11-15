@@ -1,0 +1,130 @@
+/* A single line over time, with the shaded stretch that has not happened yet. */
+
+@layer os.ctrls {
+.os-trend {
+    display: grid;
+    gap: var(--os-gap);
+}
+
+.os-trend-grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0.375rem 0.5rem;
+    direction: ltr;
+}
+
+.os-trend-ticks {
+    position: relative;
+    inline-size: var(--os-trend-ticks, 2.5rem);
+    block-size: var(--os-trend-h, 15rem);
+}
+
+.os-trend-tick {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: var(--os-at, 0);
+    transform: translateY(-50%);
+    font-size: var(--os-chart-text-size, 0.6875rem);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    opacity: var(--os-muted);
+}
+
+.os-trend-area {
+    position: relative;
+    block-size: var(--os-trend-h, 15rem);
+    border-block-end: 1.5px solid var(--os-chart-axis, var(--os-chart-rule, var(--os-fill)));
+    background-image: repeating-linear-gradient(to top, var(--os-chart-rule, var(--os-fill)) 0 1px, transparent 1px 25%);
+}
+
+.os-trend-plot {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+}
+
+.os-trend-ahead {
+    fill: var(--os-chart-ahead, var(--os-fill));
+}
+
+.os-trend-fill {
+    fill: var(--os-trend-fill, currentColor);
+    opacity: var(--os-trend-fill-alpha, 0.16);
+    stroke: none;
+}
+
+.os-trend-line {
+    fill: none;
+    stroke: var(--os-trend-line, currentColor);
+    stroke-width: var(--os-trend-thick, 2);
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.os-trend-ahead-text {
+    position: absolute;
+    inset-inline-start: calc((var(--os-at, 0) + 100%) / 2);
+    inset-block-start: 0.5rem;
+    transform: translateX(-50%);
+    font-size: var(--os-chart-text-size, 0.6875rem);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: var(--os-muted);
+}
+
+.os-trend-end {
+    position: absolute;
+    inset-inline-start: var(--os-x, 0);
+    inset-block-start: var(--os-y, 0);
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    margin: -0.25rem 0 0 -0.25rem;
+    border-radius: 50%;
+    background: var(--os-trend-line, currentColor);
+    box-shadow: 0 0 0 2px var(--os-trend-ring, var(--os-bg));
+    pointer-events: none;
+}
+
+.os-trend-end-text {
+    position: absolute;
+    inset-inline-start: var(--os-x, 0);
+    inset-block-start: min(var(--os-y, 0), calc(100% - 1.5rem));
+    transform: translate(-50%, 35%);
+    font-size: var(--os-chart-text-size, 0.6875rem);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.os-trend-hits {
+    position: absolute;
+    inset: 0;
+    display: flex;
+}
+
+.os-trend-hit {
+    position: relative;
+    flex: 1 1 0;
+    min-inline-size: 0;
+}
+
+.os-trend-names {
+    grid-column: 2;
+    display: flex;
+}
+
+.os-trend-name {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    text-align: center;
+    font-size: var(--os-chart-text-size, 0.6875rem);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: var(--os-muted);
+}
+}

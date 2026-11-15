@@ -1,0 +1,125 @@
+@font-face {
+    font-family: irs-fn;
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url('../../fonts/woff2/irs-fn-ulight.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: irs-fn;
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../../fonts/woff2/irs-fn-light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: irs-fn;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../fonts/woff2/irs-fn-reg.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: irs-fn;
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../../fonts/woff2/irs-fn-med.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: irs-fn;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../../fonts/woff2/irs-fn-bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: irs-fn;
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('../../fonts/woff2/irs-fn-black.woff2') format('woff2');
+}
+
+@layer lorea.tokens {
+    :root {
+        --os-font: "Segoe UI", Arial, sans-serif;
+        --lorea-font-fa: irs-fn, Tahoma, sans-serif;
+        --lorea-font-en: "Segoe UI", Arial, sans-serif;
+        --lorea-code-font: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+
+        --lorea-weight-light: 300;
+        --lorea-weight-regular: 400;
+        --lorea-weight-medium: 500;
+        --lorea-weight-strong: 700;
+
+        --lorea-text-meta: 0.75rem;
+        --lorea-text-desc: 0.75rem;
+        --lorea-text-title: 0.95rem;
+        --lorea-text-section: 1.15rem;
+
+        --lorea-tracking: 0;
+        --lorea-tracking-overline: 0.08em;
+    }
+
+    .lorea[lang="fa"] {
+        --lorea-text-body: 0.875rem;
+        --lorea-leading-body: 1.85;
+        --lorea-leading-heading: 1.6;
+        --lorea-leading-meta: 1.7;
+        --lorea-tracking-overline: 0;
+    }
+
+    .lorea[lang="en"] {
+        --lorea-text-body: 0.8125rem;
+        --lorea-leading-body: 1.55;
+        --lorea-leading-heading: 1.3;
+        --lorea-leading-meta: 1.45;
+    }
+
+    :root {
+        --lorea-text-page-title: clamp(1.4rem, 3.4vw, 2rem);
+        --lorea-text-hero: clamp(1.9rem, 5vw, 3.2rem);
+        --lorea-text-input: 1rem;
+        --lorea-text-heading: clamp(1.05rem, 1.5vw, 1.2rem);
+        --lorea-text-lead: clamp(0.88rem, 1.1vw, 0.95rem);
+        --lorea-text-display: 1.45rem;
+    }
+
+    @media (max-width: 47.99rem) {
+        :root {
+            --lorea-text-meta: 0.8rem;
+            --lorea-text-desc: 0.8125rem;
+            --lorea-text-title: 1rem;
+        }
+
+        .lorea[lang="fa"] {
+            --lorea-text-body: 0.9375rem;
+        }
+
+        .lorea[lang="en"] {
+            --lorea-text-body: 0.875rem;
+        }
+    }
+
+    .lorea[lang="fa"] {
+        font-family: var(--lorea-font-fa);
+    }
+
+    .lorea[lang="en"] {
+        font-family: var(--lorea-font-en);
+    }
+
+    .lorea :lang(en):not(code):not(pre):not(samp) {
+        font-family: var(--lorea-font-en);
+    }
+
+    .lorea :lang(fa):not(code):not(pre):not(samp) {
+        font-family: var(--lorea-font-fa);
+    }
+}
